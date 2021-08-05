@@ -1,7 +1,129 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "dev-stalk-landing-page": {
+      "root": "apps/dev-stalk-landing-page",
+      "sourceRoot": "apps/dev-stalk-landing-page/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/dev-stalk-landing-page",
+            "index": "apps/dev-stalk-landing-page/src/index.html",
+            "main": "apps/dev-stalk-landing-page/src/main.tsx",
+            "polyfills": "apps/dev-stalk-landing-page/src/polyfills.ts",
+            "tsConfig": "apps/dev-stalk-landing-page/tsconfig.app.json",
+            "assets": [
+              "apps/dev-stalk-landing-page/src/favicon.ico",
+              "apps/dev-stalk-landing-page/src/assets"
+            ],
+            "styles": ["apps/dev-stalk-landing-page/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dev-stalk-landing-page/src/environments/environment.ts",
+                  "with": "apps/dev-stalk-landing-page/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "dev-stalk-landing-page:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "dev-stalk-landing-page:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/dev-stalk-landing-page/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/dev-stalk-landing-page"],
+          "options": {
+            "jestConfig": "apps/dev-stalk-landing-page/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "dev-stalk-landing-page-e2e": {
+      "root": "apps/dev-stalk-landing-page-e2e",
+      "sourceRoot": "apps/dev-stalk-landing-page-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dev-stalk-landing-page-e2e/cypress.json",
+            "tsConfig": "apps/dev-stalk-landing-page-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dev-stalk-landing-page:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dev-stalk-landing-page:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/dev-stalk-landing-page-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "dev-stalk-landing-page"
 }
