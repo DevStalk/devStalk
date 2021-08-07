@@ -1,0 +1,11 @@
+{
+  "folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "apps\\dev-stalk-landing-page"
+		}
+	],
+  "settings": {}
+}
