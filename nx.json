@@ -33,6 +33,9 @@
     "dev-stalk-landing-page-e2e": {
       "tags": [],
       "implicitDependencies": ["dev-stalk-landing-page"]
+    },
+    "ui-effects": {
+      "tags": []
     }
   }
 }

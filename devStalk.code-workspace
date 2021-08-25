@@ -4,6 +4,9 @@
 			"path": "."
 		},
 		{
+			"path": "apps\\dev-stalk-landing-page\\src\\sass"
+		},
+		{
 			"path": "apps\\dev-stalk-landing-page"
 		}
 	],

@@ -1,0 +1,26 @@
+// * {
+//   box-sizing: border-box; /* 1 */
+// }
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+html {
+  font-size: 0.55vw;
+}
+
+ul,
+li {
+  text-indent: none;
+  list-style-type: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}

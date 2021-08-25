@@ -1,0 +1,51 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  &__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 98;
+    padding: 3rem 0rem 2rem 0rem;
+  }
+  &__logo {
+    font-size: 1.4rem;
+    display: flex;
+    margin: 0 30vw 0 30vw;
+    align-items: center;
+    & svg {
+      width: 4rem;
+      height: 4rem;
+      margin-right: 1rem;
+    }
+    & h1 {
+      color: #1b1b1b;
+      all: unset;
+      font-size: 4.2rem;
+      font-family: Futura PT;
+      // font-family: Raleway;
+      font-weight: 300;
+      & span {
+        font-weight: 600;
+      }
+    }
+  }
+  &__menu {
+    font-variation-settings: 'wght' 300;
+    font-size: 1.8rem;
+  }
+  &__cta {
+    & a {
+      font-variation-settings: 'wght' 400;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.bg {
+  color: rgba(255, 255, 255, 1) !important;
+}
