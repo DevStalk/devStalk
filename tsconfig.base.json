@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@dev-stalk/ui": ["libs/ui/src/index.ts"],
       "@dev-stalk/ui-effects": ["libs/ui-effects/src/index.ts"]
     }
   },

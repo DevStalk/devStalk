@@ -1,3 +1,5 @@
+// ---------------------------------------IMPORTS---------------------------------------- //
+
 @font-face {
   font-family: Raleway;
   src: url('./assets/fonts/Raleway/Raleway-VariableFont_wght.ttf');
@@ -101,11 +103,74 @@
   font-weight: 800;
   font-style: italic;
 }
+// -------------------------------------------------------------------------------------- //
 
-// @font-face {
-//   font-family: HelveticaNow;
-//   src: url('./assets/fonts/HelveticaNowText/HelveticaNowText-Regular.otf');
-// }
+////////////////////////////////////////////////////////////////
+// Default Format for Whole Website
 body {
   font-family: Manrope;
+}
+//////////////////////////////////////
+
+///////////////////
+// Type 1 Text Formats
+.tp1 {
+  all: unset;
+  color: inherit;
+  font-family: Raleway;
+  text-align: center;
+}
+
+.tp1-heading-l1 {
+  font-size: 7rem;
+}
+
+.tp1-heading-l2 {
+  font-size: 5rem;
+}
+
+.tp1-heading-l3 {
+  font-size: 3rem;
+}
+
+.tp1-para-l1 {
+}
+
+.tp1-para-l2 {
+}
+
+//////////////////
+// Type 2 Text Formats
+.tp2-heading-l1 {
+}
+
+.tp2-heading-l2 {
+}
+
+.tp2-heading-l3 {
+}
+
+.tp2-para-l1 {
+}
+
+.tp2-para-l2 {
+}
+
+/////////////////
+// Text Decorations
+.tdecor-1 {
+  display: inline-block;
+  text-transform: capitalize;
+  position: relative;
+  z-index: 1;
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 9%;
+    display: inline-block;
+    width: 100%;
+    height: 20%;
+    background-color: $color-primary;
+  }
 }

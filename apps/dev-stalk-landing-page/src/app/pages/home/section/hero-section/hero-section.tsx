@@ -1,25 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// Third Party Imports
+// ----------------------Third Party Imports------------------------------------- //
 import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+// ----------------------Third Party Imports------------------------------------- //
 
-// libraries
+// ----------------------Libraries------------------------------------- //
 import { AnimatedLetter } from '@dev-stalk/ui-effects';
 import useWindowSize from '../../../../hooks/useWindowSize';
+// ----------------------Libraries------------------------------------- //
 
-// SVGs
+// ----------------------Image Imports------------------------------------- //
 import { ReactComponent as ScrollArrow } from '../../../../../assets/components/scrollArrow.svg';
 import android from '../../../../../assets/components/3d/android-free/Android_perspective_matte.png';
 import code from '../../../../../assets/components/3d/code-free/Code_perspective_matte.png';
 import comment from '../../../../../assets/components/3d/comment-free/Comment_perspective_matte.png';
 import ethereum from '../../../../../assets/components/3d/ethereum-free/Ethereum_perspective_matte.png';
 import rocket from '../../../../../assets/components/3d/rocket-free/Rocket_perspective_matte.png';
+// ----------------------Image Imports------------------------------------- //
 
+// ----------------------Style Sheet Imports------------------------------------- //
 import styles from './hero-section.module.scss';
+// ----------------------Style Sheet Imports------------------------------------- //
 
 /* eslint-disable-next-line */
 export interface HeroSectionProps {}
 
+// ----------------------Global Animations------------------------------------- //
 const stagger = {
   initial: { opacity: 0 },
   animate: (i: number) => ({
@@ -36,7 +44,12 @@ const noEffectStagger = {
   animate: { opacity: 1, transition: { ease: 'easeInOut', duration: 1 } },
 };
 
-const ctaAnimation = {
+const dropFromTop = {
+  initial: { scale: 3, opacity: 0 },
+  animate: { scale: 1, opacity: 1, transition: { duration: 0.2 } },
+};
+
+const slideUpAnimation = {
   initial: { opacity: 0, y: 100 },
   animate: {
     opacity: 1,
@@ -44,40 +57,33 @@ const ctaAnimation = {
     transition: { ease: 'easeInOut', duration: 1 },
   },
 };
+// ----------------------Global Animations------------------------------------- //
 
-const ctaBehaviour = {
-  initial: { width: '0rem', display: 'none' },
-  animate: {
-    width: '40rem',
-    display: 'block',
-    transition: { type: 'spring', stiffness: '100' },
-  },
-};
-
-const scrollSkipAnimation = {
-  initial: { opacity: 0, scale: 1.4, y: 100 },
-  animate: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { ease: 'easeInOut', duration: 1 },
-  },
-};
-const HeroToNextAnimations = {
-  startStage: { opacity: 0 },
-  loadingEndStage: {
-    backgroundColor: 'rgba(255, 255, 255, 0)',
-    opacity: 1,
-    transition: { ease: 'easeInOut', duration: 1 },
-  },
-  moveEndStage: {
-    backgroundColor: 'black',
-    opacity: 1,
-    transition: { ease: 'easeInOut', duration: 1 },
-  },
-};
+///////////////////////////////////////////////////////////////////
+// Main Section
+///////////////////////////////////////////////////////////////////
 
 export function HeroSection(props: HeroSectionProps) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const opacityTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.' + styles.hero,
+      start: 'top top',
+      end: '+=600px top',
+      pin: true,
+      pinSpacing: false,
+      scrub: 0.2,
+      // markers: true,
+    },
+  });
+
+  opacityTL.fromTo(
+    '.' + styles.hero,
+    { opacity: 1 },
+    { opacity: 0, duration: 10 }
+  );
+
   return (
     <motion.div
       className={styles.hero__wrapper}
@@ -86,68 +92,27 @@ export function HeroSection(props: HeroSectionProps) {
       initial="initial"
       animate="animate"
     >
-      <HeroToNext />
       <HeroMain />
+      <HeroToNext />
     </motion.div>
   );
 }
+///////////////////////////////////////////////////////////////////
+// End of Main Section
+///////////////////////////////////////////////////////////////////
 
-const HeroMainElements = () => {
-  return (
-    <motion.div className={styles.hero__mainEl} custom={0.2} variants={stagger}>
-      <motion.div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper1} `}
-        variants={noEffectStagger}
-      >
-        <img
-          className={styles.hero__mainEl_child}
-          src={android}
-          alt="android"
-        />
-      </motion.div>
-      <motion.div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper2} `}
-        variants={noEffectStagger}
-      >
-        <img className={styles.hero__mainEl_child} src={code} alt="code" />
-      </motion.div>
-      <motion.div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper3} `}
-        variants={noEffectStagger}
-      >
-        <img
-          className={styles.hero__mainEl_child}
-          src={comment}
-          alt="comment"
-        />
-      </motion.div>
-      <motion.div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper4} `}
-        variants={noEffectStagger}
-      >
-        <img
-          className={styles.hero__mainEl_child}
-          src={ethereum}
-          alt="ethereum"
-        />
-      </motion.div>
-      <motion.div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper5} `}
-        variants={noEffectStagger}
-      >
-        <img className={styles.hero__mainEl_child} src={rocket} alt="rocket" />
-      </motion.div>
-    </motion.div>
-  );
-};
+///////////////////////////////////////////////////////////////////
+// Hero Main Section
+///////////////////////////////////////////////////////////////////
 
+// ----------------------Logic------------------------------------- //
 const HeroMain = () => {
-  const [startHereState, setStartHereState] = useState(false);
+  const [clicked, setClicked] = useState(false);
   return (
     <motion.div
-      className={`${styles.hero} sticky`}
-      custom={0.2}
-      variants={stagger}
+      className={`${styles.hero}`}
+      custom={1}
+      variants={heroMainBehaviour}
       initial="initial"
       animate="animate"
     >
@@ -162,124 +127,143 @@ const HeroMain = () => {
           '0.005'
         )}
       </motion.h4>
-      <HeroMainElements />
-      <motion.div className={styles.hero__cta} variants={ctaAnimation}>
+      <HeroMainSVGs />
+      <motion.div className={styles.hero__cta} variants={slideUpAnimation}>
         <motion.input
           className={styles.hero__cta__input}
           placeholder="iwant@developeridentity.com"
           variants={ctaBehaviour}
-          animate={startHereState ? 'animate' : 'initial'}
+          animate={clicked ? 'animate' : 'initial'}
         ></motion.input>
         <a
           onClick={() => {
-            console.log('hello');
-            setStartHereState(true);
+            if (clicked) {
+              console.log('popup');
+            } else {
+              setClicked(true);
+            }
           }}
           className={styles.hero__cta__button}
         >
           Join Waitlist
         </a>
       </motion.div>
-      <motion.div className={styles.hero__tut} variants={scrollSkipAnimation}>
+      <motion.div className={styles.hero__tut} variants={slideUpAnimation}>
         <ScrollArrow className={styles.hero__tut__arrow} />
         <span>Scroll</span>
       </motion.div>
     </motion.div>
   );
 };
+// ---------------------------------------------------------------------- //
+
+// ----------------------Animations------------------------------------- //
+const ctaBehaviour = {
+  initial: { width: '0rem', display: 'none' },
+  animate: {
+    width: '40rem',
+    display: 'block',
+    transition: { type: 'spring', stiffness: '100' },
+  },
+};
+
+const heroMainBehaviour = {
+  initial: { opacity: 0 },
+  animate: (i: number) => ({
+    opacity: i,
+    transition: {
+      delayChildren: 0.6,
+      staggerChildren: 0.1,
+    },
+  }),
+};
+// --------------------------------------------------------------------- //
+
+///////////////////////////////////////////////////////////////////
+// End of Hero Main
+///////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+// Extra Items
+const HeroMainSVGs = () => {
+  return (
+    <>
+      <motion.div
+        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper1} `}
+        variants={dropFromTop}
+      >
+        <img
+          className={styles.hero__mainEl_child}
+          src={android}
+          alt="android"
+        />
+      </motion.div>
+      <motion.div
+        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper2} `}
+        variants={dropFromTop}
+      >
+        <img className={styles.hero__mainEl_child} src={code} alt="code" />
+      </motion.div>
+      <motion.div
+        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper3} `}
+        variants={dropFromTop}
+      >
+        <img
+          className={styles.hero__mainEl_child}
+          src={comment}
+          alt="comment"
+        />
+      </motion.div>
+      <motion.div
+        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper4} `}
+        variants={dropFromTop}
+      >
+        <img
+          className={styles.hero__mainEl_child}
+          src={ethereum}
+          alt="ethereum"
+        />
+      </motion.div>
+      <motion.div
+        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper5} `}
+        variants={dropFromTop}
+      >
+        <img className={styles.hero__mainEl_child} src={rocket} alt="rocket" />
+      </motion.div>
+    </>
+  );
+};
 
 export function HeroToNext() {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const [pointer, setPointer] = React.useState(false);
-  const [black, setBlack] = React.useState(false);
-  const size = useWindowSize();
+  const htnTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.' + styles.hero__wrapper,
+      start: 'top top',
+      end: 'bottom center',
+      scrub: 0.5,
+      // markers: true,
+    },
+  });
 
-  useEffect(() => {
-    const handleScroll = (e: any) => {
-      const vh = size.height;
-      const vw = size.width;
-      const scroll = window.scrollY;
-      console.log(scroll);
-      let xTemp = (-scroll * 100) / vh;
-      let yTemp = ((scroll * 100) / vh) * (10 / 9);
-
-      if ((xTemp >= -76 && xTemp <= -66) || (yTemp >= 75 && yTemp <= 85)) {
-        xTemp = -72;
-        yTemp = 80;
-      } else if (
-        (xTemp >= -150 && xTemp <= -140) ||
-        (yTemp >= 155 && yTemp <= 165)
-      ) {
-        xTemp = -144;
-        yTemp = 160;
-      } else if (
-        (xTemp >= -225 && xTemp <= -215) ||
-        (yTemp >= 235 && yTemp <= 245)
-      ) {
-        xTemp = -216;
-        yTemp = 240;
-      }
-
-      // console.log(yTemp);
-      if (yTemp >= 80) {
-        setBlack(true);
-        if (yTemp <= 300) {
-          setPointer(true);
-        } else {
-          setPointer(false);
-        }
-      } else {
-        setBlack(false);
-        setPointer(false);
-      }
-
-      xTemp = xTemp * (vh / 100);
-      yTemp = yTemp * (vw / 100);
-      x.set(xTemp);
-      y.set(yTemp);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [size.height, size.width]);
+  htnTL
+    .to('.' + styles.htn, { x: '80%', y: '-80%', ease: 'power1.out' })
+    .to('.' + styles.htn, { x: '160%', y: '-160%', ease: 'power1.out' })
+    .to('.' + styles.htn, { x: '240%', y: '-240%', ease: 'power1.out' })
+    .to('.' + styles.htn, { x: '320%', y: '-320%', ease: 'power1.out' })
+    .to('.' + styles.htn, { opacity: 0 }, '-=.5');
 
   return (
-    <motion.div
-      className={`${styles.htn} ${pointer ? styles.pointer : ''}`}
-      variants={HeroToNextAnimations}
-      initial="startStage"
-      animate={black ? 'moveEndStage' : 'loadingEndStage'}
-    >
-      <motion.div
-        className={`${styles.htn__child} ${styles.htn__child1} `}
-        style={{
-          translateX: y,
-          translateY: x,
-        }}
-      >
+    <div className={`${styles.htn} `}>
+      <div className={`${styles.htn__child} ${styles.htn__child1} `}>
         <h2>Explore</h2>
-      </motion.div>
-      <motion.div
-        className={`${styles.htn__child} ${styles.htn__child2} `}
-        style={{
-          translateX: y,
-          translateY: x,
-        }}
-      >
+      </div>
+      <div className={`${styles.htn__child} ${styles.htn__child2} `}>
         <h2>Create</h2>
-      </motion.div>
-      <motion.div
-        className={`${styles.htn__child} ${styles.htn__child3} `}
-        style={{
-          translateX: y,
-          translateY: x,
-        }}
-      >
+      </div>
+      <div className={`${styles.htn__child} ${styles.htn__child3} `}>
         <h2>Inspire</h2>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
 

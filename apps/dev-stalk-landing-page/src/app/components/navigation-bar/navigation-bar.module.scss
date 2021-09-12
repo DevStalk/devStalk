@@ -18,19 +18,20 @@
     margin: 0 30vw 0 30vw;
     align-items: center;
     & svg {
-      width: 4rem;
-      height: 4rem;
+      width: 5.6rem;
+      height: 5.6rem;
       margin-right: 1rem;
     }
     & h1 {
       color: #1b1b1b;
       all: unset;
-      font-size: 4.2rem;
-      font-family: Futura PT;
-      // font-family: Raleway;
-      font-weight: 300;
+      font-size: 4.5rem;
+      font-family: Raleway;
+      font-weight: 50;
       & span {
+        font-size: 4.7rem;
         font-weight: 600;
+        font-family: Futura PT;
       }
     }
   }

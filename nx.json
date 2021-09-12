@@ -34,6 +34,9 @@
       "tags": [],
       "implicitDependencies": ["dev-stalk-landing-page"]
     },
+    "ui": {
+      "tags": []
+    },
     "ui-effects": {
       "tags": []
     }

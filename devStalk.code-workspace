@@ -1,14 +1,39 @@
 {
   "folders": [
 		{
+			"name": "dev-stalk",
 			"path": "."
 		},
 		{
+			"name": "src",
+			"path": "apps\\dev-stalk-landing-page\\src"
+		},
+		{
+			"name": "app",
+			"path": "apps\\dev-stalk-landing-page\\src\\app"
+		},
+		{
+			"name": "sass",
 			"path": "apps\\dev-stalk-landing-page\\src\\sass"
 		},
 		{
-			"path": "apps\\dev-stalk-landing-page"
+			"name": "assets",
+			"path": "apps\\dev-stalk-landing-page\\src\\assets"
+		},
+		{
+			"name": "libs",
+			"path": "libs"
 		}
 	],
-  "settings": {}
+	"settings": {
+		"cSpell.words": [
+			"Behaviour",
+			"gsap",
+			"SVGs"
+		],
+		"liveServer.settings.multiRootWorkspaceName": "dev-stalk",
+		"cSpell.ignoreWords": [
+			"gsap"
+		]
+	}
 }

@@ -1,0 +1,19 @@
+.firstSection {
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  padding: 0rem 20rem 0rem 20rem;
+  margin: auto;
+}
+
+.moveUp {
+  transform: translateY(0);
+}
+
+.moveDown {
+  transform: translateY(-10px);
+}
+
+.word {
+  opacity: 1;
+}
