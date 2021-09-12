@@ -47,7 +47,7 @@ export function NavigationBar(props: NavigationBarProps) {
       <div className={styles.navigation}>
         <div className={styles.navigation__menu}>
           <a href="/about" className={`${onTop ? '' : styles.bg}`}>
-            about
+            {/* about */}
           </a>
         </div>
         <a href="/home" className={styles.navigation__logo}>
@@ -58,7 +58,7 @@ export function NavigationBar(props: NavigationBarProps) {
         </a>
         <div className={styles.navigation__cta}>
           <a href="/register" className={`${onTop ? '' : styles.bg}`}>
-            Join Waitlist
+            {/* Join Waitlist */}
           </a>
         </div>
       </div>
