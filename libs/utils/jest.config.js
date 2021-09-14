@@ -1,9 +1,9 @@
 module.exports = {
-  displayName: 'ui-effects',
+  displayName: 'utils',
   preset: '../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/ui-effects',
+  coverageDirectory: '../../coverage/libs/utils',
 };

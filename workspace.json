@@ -105,43 +105,23 @@
         }
       }
     },
-    "ui": {
-      "root": "libs/ui",
-      "sourceRoot": "libs/ui/src",
+    "utils": {
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": ["libs/utils/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ui"],
+          "outputs": ["coverage/libs/utils"],
           "options": {
-            "jestConfig": "libs/ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "ui-effects": {
-      "root": "libs/ui-effects",
-      "sourceRoot": "libs/ui-effects/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/ui-effects/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ui-effects"],
-          "options": {
-            "jestConfig": "libs/ui-effects/jest.config.js",
+            "jestConfig": "libs/utils/jest.config.js",
             "passWithNoTests": true
           }
         }

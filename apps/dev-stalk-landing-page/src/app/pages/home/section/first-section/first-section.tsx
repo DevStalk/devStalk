@@ -1,8 +1,7 @@
 import styles from './first-section.module.scss';
-import { useEffect, useRef, useState } from 'react';
-import { useIntersection } from 'react-use';
+import { useEffect } from 'react';
 import { gsap } from 'gsap';
-import { LetterAnimation } from '@dev-stalk/ui';
+import { TextSplitting } from '@dev-stalk/utils';
 import { ScrollTrigger } from 'gsap/src/all';
 
 /* eslint-disable-next-line */
@@ -27,7 +26,7 @@ export function FirstSection(props: FirstSectionProps) {
     <div className={styles.firstSection}>
       <h4 data-splitting className={`tp1 tp1-heading-l1 ${styles.sitDown}`}>
         {/* devStalk is the place for you to start your developer journey right!! */}
-        {LetterAnimation(
+        {TextSplitting(
           'devStalk is the place for you to start your developer journey right!!',
           'letter',
           'letterAnimate',

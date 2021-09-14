@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/all';
 
 // ----------------------Libraries------------------------------------- //
 // import { AnimatedLetter } from '@dev-stalk/ui-effects';
-import { LetterAnimation } from '@dev-stalk/ui';
+import { TextSplitting } from '@dev-stalk/utils';
 // ----------------------Libraries------------------------------------- //
 
 // ----------------------Image Imports------------------------------------- //
@@ -124,7 +124,7 @@ const HeroMain = () => {
   return (
     <div className={styles.hero}>
       <h2 className={styles.hero__heading}>
-        {LetterAnimation(
+        {TextSplitting(
           'Create Your Developer Identity',
           'letter',
           styles.hero__letterAnimation,
@@ -132,7 +132,7 @@ const HeroMain = () => {
         )}
       </h2>
       <h4 className={styles.hero__subHeading}>
-        {LetterAnimation(
+        {TextSplitting(
           'A new professional community for your independent jouney',
           'letter',
           styles.hero__letterAnimation,
