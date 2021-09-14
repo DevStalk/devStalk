@@ -139,7 +139,6 @@ const HeroMain = () => {
           styles.hero__subHeading_container
         )}
       </h4>
-      <HeroMainSVGs />
       <div className={`${styles.hero__cta} slideUp`}>
         <input
           className={styles.hero__cta__input}
@@ -162,6 +161,7 @@ const HeroMain = () => {
         <ScrollArrow className={styles.hero__tut__arrow} />
         <span>Scroll</span>
       </div>
+      <HeroMainSVGs />
     </div>
   );
 };
