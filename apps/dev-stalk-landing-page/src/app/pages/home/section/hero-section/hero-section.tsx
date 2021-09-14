@@ -241,7 +241,6 @@ export function HeroToNext() {
       start: 'top top',
       end: 'bottom center',
       scrub: 0.5,
-      // markers: true,
     },
   });
 
