@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // ----------------------Third Party Imports------------------------------------- //
 import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 // ----------------------Third Party Imports------------------------------------- //
@@ -9,7 +8,6 @@ import { ScrollTrigger } from 'gsap/all';
 // ----------------------Libraries------------------------------------- //
 // import { AnimatedLetter } from '@dev-stalk/ui-effects';
 import { LetterAnimation } from '@dev-stalk/ui';
-import useWindowSize from '../../../../hooks/useWindowSize';
 // ----------------------Libraries------------------------------------- //
 
 // ----------------------Image Imports------------------------------------- //
@@ -27,33 +25,6 @@ import styles from './hero-section.module.scss';
 
 /* eslint-disable-next-line */
 export interface HeroSectionProps {}
-
-// ----------------------Global Animations------------------------------------- //
-const stagger = {
-  initial: { opacity: 0 },
-  animate: (i: number) => ({
-    opacity: 1,
-    transition: {
-      delayChildren: 0.6,
-      staggerChildren: i,
-    },
-  }),
-};
-
-const noEffectStagger = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { ease: 'easeInOut', duration: 1 } },
-};
-
-const slideUpAnimation = {
-  initial: { opacity: 0, y: 100 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { ease: 'easeInOut', duration: 1 },
-  },
-};
-// ----------------------Global Animations------------------------------------- //
 
 ///////////////////////////////////////////////////////////////////
 // Main Section
@@ -81,16 +52,10 @@ export function HeroSection(props: HeroSectionProps) {
   );
 
   return (
-    <motion.div
-      className={styles.hero__wrapper}
-      custom={0.4}
-      variants={stagger}
-      initial="initial"
-      animate="animate"
-    >
+    <div className={styles.hero__wrapper}>
       <HeroMain />
       <HeroToNext />
-    </motion.div>
+    </div>
   );
 }
 ///////////////////////////////////////////////////////////////////
@@ -105,8 +70,12 @@ export function HeroSection(props: HeroSectionProps) {
 const HeroMain = () => {
   const [clicked, setClicked] = useState(false);
   const timeline = gsap.timeline();
-  gsap.fromTo('.slideUp', { opacity: 0, y: 100 }, { opacity: 1, y: 0 });
-  gsap.fromTo(
+  const slideUpAnimation = gsap.fromTo(
+    '.slideUp',
+    { opacity: 0, y: 100 },
+    { opacity: 1, y: 0 }
+  );
+  const letterAnimation = gsap.fromTo(
     '.' + styles.hero__letterAnimation,
     { y: -100 },
     {
@@ -115,11 +84,20 @@ const HeroMain = () => {
       ease: 'power4.out(1)',
     }
   );
+  const elementsAnimation = gsap.fromTo(
+    '.' + styles.hero__mainEl_wrapper,
+    { scale: 3, opacity: 0 },
+    {
+      scale: 1,
+      opacity: 1,
+      stagger: { each: 0.1 },
+      ease: 'power1.out(1)',
+    }
+  );
   timeline
-    .to('.' + styles.hero__heading, { duration: 0.1 })
-    .to('.' + styles.hero__subHeading, { duration: 0.1 })
-    .to('.' + styles.hero__cta, { duration: 0.2 })
-    .to('.' + styles.hero__tut, { duration: 0.2 });
+    .add(letterAnimation)
+    .add(elementsAnimation, '-=.5')
+    .add(slideUpAnimation);
   return (
     <div className={styles.hero}>
       <h2 className={styles.hero__heading}>
@@ -164,29 +142,6 @@ const HeroMain = () => {
     </div>
   );
 };
-// ---------------------------------------------------------------------- //
-
-// ----------------------Animations------------------------------------- //
-const ctaBehaviour = {
-  initial: { width: '0rem', display: 'none' },
-  animate: {
-    width: '40rem',
-    display: 'block',
-    transition: { type: 'spring', stiffness: '100' },
-  },
-};
-
-const heroMainBehaviour = {
-  initial: { opacity: 0 },
-  animate: (i: number) => ({
-    opacity: i,
-    transition: {
-      delayChildren: 0.6,
-      staggerChildren: 0.1,
-    },
-  }),
-};
-// --------------------------------------------------------------------- //
 
 ///////////////////////////////////////////////////////////////////
 // End of Hero Main
@@ -195,16 +150,6 @@ const heroMainBehaviour = {
 ///////////////////////////////////////////////////////////////////////////////
 // Extra Items
 const HeroMainSVGs = () => {
-  gsap.fromTo(
-    '.' + styles.hero__mainEl_wrapper,
-    { scale: 3, opacity: 0 },
-    {
-      scale: 1,
-      opacity: 1,
-      stagger: { each: 0.1 },
-      ease: 'power1.out(1)',
-    }
-  );
   return (
     <>
       <div
