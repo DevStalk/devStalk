@@ -7,7 +7,8 @@ import { ScrollTrigger } from 'gsap/all';
 // ----------------------Third Party Imports------------------------------------- //
 
 // ----------------------Libraries------------------------------------- //
-import { AnimatedLetter } from '@dev-stalk/ui-effects';
+// import { AnimatedLetter } from '@dev-stalk/ui-effects';
+import { LetterAnimation } from '@dev-stalk/ui';
 import useWindowSize from '../../../../hooks/useWindowSize';
 // ----------------------Libraries------------------------------------- //
 
@@ -42,11 +43,6 @@ const stagger = {
 const noEffectStagger = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { ease: 'easeInOut', duration: 1 } },
-};
-
-const dropFromTop = {
-  initial: { scale: 3, opacity: 0 },
-  animate: { scale: 1, opacity: 1, transition: { duration: 0.2 } },
 };
 
 const slideUpAnimation = {
@@ -108,33 +104,46 @@ export function HeroSection(props: HeroSectionProps) {
 // ----------------------Logic------------------------------------- //
 const HeroMain = () => {
   const [clicked, setClicked] = useState(false);
+  const timeline = gsap.timeline();
+  gsap.fromTo('.slideUp', { opacity: 0, y: 100 }, { opacity: 1, y: 0 });
+  gsap.fromTo(
+    '.' + styles.hero__letterAnimation,
+    { y: -100 },
+    {
+      y: 0,
+      stagger: { each: 0.01 },
+      ease: 'power4.out(1)',
+    }
+  );
+  timeline
+    .to('.' + styles.hero__heading, { duration: 0.1 })
+    .to('.' + styles.hero__subHeading, { duration: 0.1 })
+    .to('.' + styles.hero__cta, { duration: 0.2 })
+    .to('.' + styles.hero__tut, { duration: 0.2 });
   return (
-    <motion.div
-      className={`${styles.hero}`}
-      custom={1}
-      variants={heroMainBehaviour}
-      initial="initial"
-      animate="animate"
-    >
-      <motion.h2 className={styles.hero__heading} variants={noEffectStagger}>
-        {AnimatedLetter('Create Your', '0.015')}
-        {AnimatedLetter('Developer', '0.015')}
-        {AnimatedLetter('Identity', '0.015')}
-      </motion.h2>
-      <motion.h4 className={styles.hero__subHeading} variants={noEffectStagger}>
-        {AnimatedLetter(
-          'A new professional community for your independent journey',
-          '0.005'
+    <div className={styles.hero}>
+      <h2 className={styles.hero__heading}>
+        {LetterAnimation(
+          'Create Your Developer Identity',
+          'letter',
+          styles.hero__letterAnimation,
+          styles.hero__heading_container
         )}
-      </motion.h4>
+      </h2>
+      <h4 className={styles.hero__subHeading}>
+        {LetterAnimation(
+          'A new professional community for your independent jouney',
+          'letter',
+          styles.hero__letterAnimation,
+          styles.hero__subHeading_container
+        )}
+      </h4>
       <HeroMainSVGs />
-      <motion.div className={styles.hero__cta} variants={slideUpAnimation}>
-        <motion.input
+      <div className={`${styles.hero__cta} slideUp`}>
+        <input
           className={styles.hero__cta__input}
           placeholder="iwant@developeridentity.com"
-          variants={ctaBehaviour}
-          animate={clicked ? 'animate' : 'initial'}
-        ></motion.input>
+        ></input>
         <a
           onClick={() => {
             if (clicked) {
@@ -147,12 +156,12 @@ const HeroMain = () => {
         >
           Join Waitlist
         </a>
-      </motion.div>
-      <motion.div className={styles.hero__tut} variants={slideUpAnimation}>
+      </div>
+      <div className={`${styles.hero__tut} slideUp`}>
         <ScrollArrow className={styles.hero__tut__arrow} />
         <span>Scroll</span>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 // ---------------------------------------------------------------------- //
@@ -186,50 +195,55 @@ const heroMainBehaviour = {
 ///////////////////////////////////////////////////////////////////////////////
 // Extra Items
 const HeroMainSVGs = () => {
+  gsap.fromTo(
+    '.' + styles.hero__mainEl_wrapper,
+    { scale: 3, opacity: 0 },
+    {
+      scale: 1,
+      opacity: 1,
+      stagger: { each: 0.1 },
+      ease: 'power1.out(1)',
+    }
+  );
   return (
     <>
-      <motion.div
+      <div
         className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper1} `}
-        variants={dropFromTop}
       >
         <img
           className={styles.hero__mainEl_child}
           src={android}
           alt="android"
         />
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper2} `}
-        variants={dropFromTop}
       >
         <img className={styles.hero__mainEl_child} src={code} alt="code" />
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper3} `}
-        variants={dropFromTop}
       >
         <img
           className={styles.hero__mainEl_child}
           src={comment}
           alt="comment"
         />
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper4} `}
-        variants={dropFromTop}
       >
         <img
           className={styles.hero__mainEl_child}
           src={ethereum}
           alt="ethereum"
         />
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper5} `}
-        variants={dropFromTop}
       >
         <img className={styles.hero__mainEl_child} src={rocket} alt="rocket" />
-      </motion.div>
+      </div>
     </>
   );
 };

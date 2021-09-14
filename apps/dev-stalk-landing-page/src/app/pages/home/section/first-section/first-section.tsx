@@ -16,7 +16,7 @@ export function FirstSection(props: FirstSectionProps) {
       { y: 100 },
       {
         y: 0,
-        stagger: { each: 0.02 },
+        stagger: { each: 0.01 },
         ease: 'back.out(1)',
         scrollTrigger: { trigger: '.containerAnimated', markers: false },
       }

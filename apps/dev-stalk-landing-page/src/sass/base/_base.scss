@@ -11,7 +11,17 @@ body,
 }
 
 html {
-  font-size: 0.55vw;
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
 }
 
 ul,
@@ -23,4 +33,9 @@ li {
 a {
   color: black;
   text-decoration: none;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $white;
 }
