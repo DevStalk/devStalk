@@ -1,13 +1,8 @@
-// * {
-//   box-sizing: border-box; /* 1 */
-// }
-
 html,
 body,
 #root {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
-  overflow: visible;
 }
 
 html {
@@ -38,4 +33,9 @@ a {
 ::selection {
   background-color: $color-primary;
   color: $white;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }

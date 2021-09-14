@@ -125,7 +125,19 @@ const HeroMain = () => {
     <div className={styles.hero}>
       <h2 className={styles.hero__heading}>
         {TextSplitting(
-          'Create Your Developer Identity',
+          'Create Your',
+          'letter',
+          styles.hero__letterAnimation,
+          styles.hero__heading_container
+        )}
+        {TextSplitting(
+          'Developer',
+          'letter',
+          styles.hero__letterAnimation,
+          styles.hero__heading_container
+        )}
+        {TextSplitting(
+          'Identity',
           'letter',
           styles.hero__letterAnimation,
           styles.hero__heading_container
