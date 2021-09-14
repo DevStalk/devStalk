@@ -51,6 +51,58 @@ export function HeroSection(props: HeroSectionProps) {
     { opacity: 0, duration: 10 }
   );
 
+  const htnTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.' + styles.hero__wrapper,
+      start: 'top top',
+      end: 'bottom center',
+      scrub: 0.5,
+    },
+  });
+
+  htnTL
+    .to('.' + styles.htn, { x: '80%', y: '-80%', ease: 'power1.out' })
+    .to('.' + styles.htn, { x: '160%', y: '-160%', ease: 'power1.out' })
+    .to('.' + styles.htn, { x: '240%', y: '-240%', ease: 'power1.out' })
+    .to('.' + styles.htn, { x: '320%', y: '-320%', ease: 'power1.out' })
+    .to('.' + styles.htn, { opacity: 0 }, '-=.5');
+
+  const timeline = gsap.timeline();
+  const hero__ctaTween = gsap.fromTo(
+    '.' + styles.hero__cta,
+    { opacity: 0, y: 100 },
+    { opacity: 1, y: 0 }
+  );
+  const hero__tutTween = gsap.fromTo(
+    '.' + styles.hero__tut,
+    { opacity: 0, y: 100 },
+    { opacity: 1, y: 0 }
+  );
+  const letterAnimation = gsap.fromTo(
+    '.' + styles.hero__letterAnimation,
+    { y: -100 },
+    {
+      y: 0,
+      stagger: { each: 0.01 },
+      ease: 'back.out(2)',
+    }
+  );
+  const elementsAnimation = gsap.fromTo(
+    '.' + styles.hero__mainEl_wrapper,
+    { scale: 3, opacity: 0 },
+    {
+      scale: 1,
+      opacity: 1,
+      stagger: { each: 0.1 },
+      ease: 'power1.out(1)',
+    }
+  );
+  timeline
+    .add(letterAnimation)
+    .add(elementsAnimation, '-=.5')
+    .add(hero__ctaTween, '-=.5')
+    .add(hero__tutTween, '-=.3');
+
   return (
     <div className={styles.hero__wrapper}>
       <HeroMain />
@@ -69,35 +121,6 @@ export function HeroSection(props: HeroSectionProps) {
 // ----------------------Logic------------------------------------- //
 const HeroMain = () => {
   const [clicked, setClicked] = useState(false);
-  const timeline = gsap.timeline();
-  const slideUpAnimation = gsap.fromTo(
-    '.slideUp',
-    { opacity: 0, y: 100 },
-    { opacity: 1, y: 0 }
-  );
-  const letterAnimation = gsap.fromTo(
-    '.' + styles.hero__letterAnimation,
-    { y: -100 },
-    {
-      y: 0,
-      stagger: { each: 0.01 },
-      ease: 'power4.out(1)',
-    }
-  );
-  const elementsAnimation = gsap.fromTo(
-    '.' + styles.hero__mainEl_wrapper,
-    { scale: 3, opacity: 0 },
-    {
-      scale: 1,
-      opacity: 1,
-      stagger: { each: 0.1 },
-      ease: 'power1.out(1)',
-    }
-  );
-  timeline
-    .add(letterAnimation)
-    .add(elementsAnimation, '-=.5')
-    .add(slideUpAnimation);
   return (
     <div className={styles.hero}>
       <h2 className={styles.hero__heading}>
@@ -151,7 +174,7 @@ const HeroMain = () => {
 // Extra Items
 const HeroMainSVGs = () => {
   return (
-    <>
+    <div className={styles.hero__mainEl}>
       <div
         className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper1} `}
       >
@@ -189,27 +212,11 @@ const HeroMainSVGs = () => {
       >
         <img className={styles.hero__mainEl_child} src={rocket} alt="rocket" />
       </div>
-    </>
+    </div>
   );
 };
 
 export function HeroToNext() {
-  const htnTL = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.' + styles.hero__wrapper,
-      start: 'top top',
-      end: 'bottom center',
-      scrub: 0.5,
-    },
-  });
-
-  htnTL
-    .to('.' + styles.htn, { x: '80%', y: '-80%', ease: 'power1.out' })
-    .to('.' + styles.htn, { x: '160%', y: '-160%', ease: 'power1.out' })
-    .to('.' + styles.htn, { x: '240%', y: '-240%', ease: 'power1.out' })
-    .to('.' + styles.htn, { x: '320%', y: '-320%', ease: 'power1.out' })
-    .to('.' + styles.htn, { opacity: 0 }, '-=.5');
-
   return (
     <div className={`${styles.htn} `}>
       <div className={`${styles.htn__child} ${styles.htn__child1} `}>
