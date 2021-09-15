@@ -10,9 +10,12 @@
   align-items: center;
   text-align: center;
   background-color: white;
-  z-index: 100;
-
+  @include respond(phone) {
+    justify-content: flex-start;
+    padding-top: 20vh;
+  }
   &__mainEl {
+    --element-base-size: 6rem;
     pointer-events: none;
     position: fixed;
     height: 100vh;
@@ -20,38 +23,93 @@
     top: 0;
     z-index: -1;
 
+    @include respond(phone) {
+      --element-base-size: 3.5rem;
+    }
+
     &_wrapper {
       position: absolute;
       z-index: -1;
       &1 {
         top: 50vh;
         right: 30vw;
-        width: 6rem;
-        height: 6rem;
+        width: var(--element-base-size);
+        height: var(--element-base-size);
+        @include respond(tab-land) {
+          top: 48vh;
+          right: 20vw;
+        }
+        @include respond(tab-port) {
+          top: 48vh;
+          right: 15vw;
+        }
+        @include respond(phone) {
+          top: 45vh;
+          right: 7vw;
+        }
+        @include respond(small-phone) {
+          right: 7vw;
+        }
       }
       &2 {
         top: 10vh;
         right: 20vw;
-        width: 12rem;
-        height: 12rem;
+        width: calc(var(--element-base-size) * 2);
+        height: calc(var(--element-base-size) * 2);
+        @include respond(tab-land) {
+        }
+        @include respond(tab-port) {
+        }
+        @include respond(phone) {
+          top: 14vh;
+        }
+        @include respond(small-phone) {
+          top: 16vh;
+          right: 10vw;
+        }
       }
       &3 {
         top: 16vh;
         left: 20vw;
-        width: 7rem;
-        height: 7rem;
+        width: calc(var(--element-base-size) + 1rem);
+        height: calc(var(--element-base-size) + 1rem);
+        @include respond(tab-land) {
+        }
+        @include respond(tab-port) {
+        }
+        @include respond(small-phone) {
+        }
+        @include respond(phone) {
+        }
       }
       &4 {
-        top: 70vh;
+        bottom: 30vh;
         right: 20vw;
-        width: 9rem;
-        height: 9rem;
+        width: calc(var(--element-base-size) + 2rem);
+        height: calc(var(--element-base-size) + 2rem);
+        @include respond(tab-land) {
+          bottom: 10vh;
+        }
+        @include respond(tab-port) {
+        }
+
+        @include respond(phone) {
+          top: 55vh;
+        }
       }
       &5 {
         top: 50vh;
         left: 27vw;
-        width: 7rem;
-        height: 7rem;
+        width: calc(var(--element-base-size) + 1rem);
+        height: calc(var(--element-base-size) + 1rem);
+        @include respond(tab-land) {
+        }
+        @include respond(tab-port) {
+        }
+        @include respond(phone) {
+          top: 48vh;
+          left: 7vw;
+        }
       }
     }
 
@@ -81,21 +139,16 @@
     color: #1b1b1b;
     @include respond(tab-land) {
       max-width: 80%;
-      font-size: 8rem;
     }
     @include respond(tab-port) {
       max-width: 80%;
-      font-size: 7rem;
     }
 
     @include respond(phone) {
       max-width: 100%;
-      font-size: 6rem;
     }
     @include respond(small-phone) {
-      margin-bottom: 9rem;
       max-width: 100%;
-      font-size: 5rem;
     }
   }
   &__subHeading {
@@ -115,7 +168,6 @@
     }
     @include respond(small-phone) {
       max-width: 80%;
-      font-size: 1.6rem;
     }
   }
   &__cta {
@@ -125,30 +177,40 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 40%;
-    @include respond(tab-land) {
-      width: 70%;
-    }
-    @include respond(phone) {
-      width: 80%;
-    }
-    @include respond(tab-port) {
-      width: 80%;
-    }
+    width: auto;
+
     &__input {
-      display: block;
+      --width-state: 0vw;
+      display: inline;
       font-variation-settings: 'wght' 700;
       font-size: 1.8rem;
       background-color: transparent;
       outline: none;
       border: none;
-      margin-left: 4%;
-      width: 60%;
+      width: 0;
       height: 100%;
+      transition: width 1s cubic-bezier(0.48, 2.73, 0.2, 0.26);
+      &__clicked {
+        margin-left: 4%;
+        margin-right: 4%;
+        display: block;
+        width: 25vw;
+        @include respond(tab-land) {
+          width: 40vw;
+        }
+        @include respond(tab-port) {
+          width: 60vw;
+        }
+        @include respond(phone) {
+          width: 50vw;
+        }
+        @include respond(small-phone) {
+          width: 40vw;
+        }
+      }
       @include respond(tab-land) {
         font-size: 1.6rem;
       }
-
       @include respond(phone) {
         font-size: 1.3rem;
       }
@@ -159,7 +221,7 @@
       cursor: pointer;
       font-size: 2rem;
       color: white;
-      width: 25%;
+      white-space: nowrap;
       padding: 3rem 5rem 3rem 5rem;
       background: rgb(116, 133, 225);
       background: linear-gradient(
@@ -186,9 +248,9 @@
     justify-content: center;
     cursor: pointer;
     &__arrow {
-      height: 1.1vw;
-      width: 1.1vw;
-      margin-right: 0.7vw;
+      height: 1.5rem;
+      width: 1.5rem;
+      margin-right: 1rem;
       animation: moveDownUp 1.6s ease-out 0.75s infinite;
     }
     & span {
@@ -252,6 +314,9 @@
       font-variation-settings: 'wght' 400;
       font-size: 16rem;
       color: white;
+      @include respond(small-phone) {
+        font-size: 8rem;
+      }
     }
     &1 {
       background: rgb(20, 226, 218);

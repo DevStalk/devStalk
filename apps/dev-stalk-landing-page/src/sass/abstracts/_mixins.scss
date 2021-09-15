@@ -15,7 +15,7 @@
     }
   }
   @if $breakpoint == small-phone {
-    @media only screen and (max-width: 22.5em) {
+    @media only screen and (max-width: 28.125em) {
       @content;
     }
   }

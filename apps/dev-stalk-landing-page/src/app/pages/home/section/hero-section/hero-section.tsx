@@ -84,7 +84,8 @@ export function HeroSection(props: HeroSectionProps) {
     {
       y: 0,
       stagger: { each: 0.01 },
-      ease: 'back.out(2)',
+      // ease: 'back.out(2)',
+      ease: 'power2.out',
     }
   );
   const elementsAnimation = gsap.fromTo(
@@ -94,7 +95,7 @@ export function HeroSection(props: HeroSectionProps) {
       scale: 1,
       opacity: 1,
       stagger: { each: 0.1 },
-      ease: 'power1.out(1)',
+      ease: 'power1.out',
     }
   );
   timeline
@@ -121,6 +122,7 @@ export function HeroSection(props: HeroSectionProps) {
 // ----------------------Logic------------------------------------- //
 const HeroMain = () => {
   const [clicked, setClicked] = useState(false);
+  const [input, setInput] = useState('');
   return (
     <div className={styles.hero}>
       <h2 className={styles.hero__heading}>
@@ -151,15 +153,22 @@ const HeroMain = () => {
           styles.hero__subHeading_container
         )}
       </h4>
-      <div className={`${styles.hero__cta} slideUp`}>
+      <div className={`${styles.hero__cta} `}>
         <input
-          className={styles.hero__cta__input}
+          className={`${styles.hero__cta__input} ${
+            clicked ? styles.hero__cta__input__clicked : ''
+          } `}
           placeholder="iwant@developeridentity.com"
+          onChange={(e) => setInput(e.target.value)}
         ></input>
         <a
-          onClick={() => {
+          onClick={(e) => {
             if (clicked) {
-              console.log('popup');
+              if (input === '') {
+                setClicked(false);
+              } else {
+                console.log('done');
+              }
             } else {
               setClicked(true);
             }
