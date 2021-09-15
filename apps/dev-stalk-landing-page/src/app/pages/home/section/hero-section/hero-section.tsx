@@ -89,7 +89,7 @@ export function HeroSection(props: HeroSectionProps) {
     }
   );
   const elementsAnimation = gsap.fromTo(
-    '.' + styles.hero__mainEl_wrapper,
+    '.' + styles.hero__main_wrapper,
     { scale: 3, opacity: 0 },
     {
       scale: 1,
@@ -125,26 +125,29 @@ const HeroMain = () => {
   const [input, setInput] = useState('');
   return (
     <div className={styles.hero}>
-      <h2 className={styles.hero__heading}>
-        {TextSplitting(
-          'Create Your',
-          'letter',
-          styles.hero__letterAnimation,
-          styles.hero__heading_container
-        )}
-        {TextSplitting(
-          'Developer',
-          'letter',
-          styles.hero__letterAnimation,
-          styles.hero__heading_container
-        )}
-        {TextSplitting(
-          'Identity',
-          'letter',
-          styles.hero__letterAnimation,
-          styles.hero__heading_container
-        )}
-      </h2>
+      <div className={styles.hero__main}>
+        <HeroMainSVGs />
+        <h2 className={styles.hero__heading}>
+          {TextSplitting(
+            'Create Your',
+            'letter',
+            styles.hero__letterAnimation,
+            styles.hero__heading_container
+          )}
+          {TextSplitting(
+            'Developer',
+            'letter',
+            styles.hero__letterAnimation,
+            styles.hero__heading_container
+          )}
+          {TextSplitting(
+            'Identity',
+            'letter',
+            styles.hero__letterAnimation,
+            styles.hero__heading_container
+          )}
+        </h2>
+      </div>
       <h4 className={styles.hero__subHeading}>
         {TextSplitting(
           'A new professional community for your independent jouney',
@@ -182,7 +185,6 @@ const HeroMain = () => {
         <ScrollArrow className={styles.hero__tut__arrow} />
         <span>Scroll</span>
       </div>
-      <HeroMainSVGs />
     </div>
   );
 };
@@ -195,45 +197,39 @@ const HeroMain = () => {
 // Extra Items
 const HeroMainSVGs = () => {
   return (
-    <div className={styles.hero__mainEl}>
+    <>
+      {/* <div className={styles.hero__main}> */}
       <div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper1} `}
+        className={` ${styles.hero__main_wrapper} ${styles.hero__main_wrapper1} `}
       >
-        <img
-          className={styles.hero__mainEl_child}
-          src={android}
-          alt="android"
-        />
+        <img className={styles.hero__main_child} src={android} alt="android" />
       </div>
       <div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper2} `}
+        className={` ${styles.hero__main_wrapper} ${styles.hero__main_wrapper2} `}
       >
-        <img className={styles.hero__mainEl_child} src={code} alt="code" />
+        <img className={styles.hero__main_child} src={code} alt="code" />
       </div>
       <div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper3} `}
+        className={` ${styles.hero__main_wrapper} ${styles.hero__main_wrapper3} `}
       >
-        <img
-          className={styles.hero__mainEl_child}
-          src={comment}
-          alt="comment"
-        />
+        <img className={styles.hero__main_child} src={comment} alt="comment" />
       </div>
       <div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper4} `}
+        className={` ${styles.hero__main_wrapper} ${styles.hero__main_wrapper4} `}
       >
         <img
-          className={styles.hero__mainEl_child}
+          className={styles.hero__main_child}
           src={ethereum}
           alt="ethereum"
         />
       </div>
       <div
-        className={` ${styles.hero__mainEl_wrapper} ${styles.hero__mainEl_wrapper5} `}
+        className={` ${styles.hero__main_wrapper} ${styles.hero__main_wrapper5} `}
       >
-        <img className={styles.hero__mainEl_child} src={rocket} alt="rocket" />
+        <img className={styles.hero__main_child} src={rocket} alt="rocket" />
       </div>
-    </div>
+      {/* </div> */}
+    </>
   );
 };
 

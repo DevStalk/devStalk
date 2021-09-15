@@ -14,49 +14,36 @@
     justify-content: flex-start;
     padding-top: 20vh;
   }
-  &__mainEl {
-    --element-base-size: 6rem;
-    pointer-events: none;
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    z-index: -1;
-    @include respond(tab-land) {
-      --element-base-size: 4rem;
-    }
 
-    @include respond(phone) {
-      --element-base-size: 3.5rem;
+  &__main {
+    --element-base-size: min(7vw, 7vh);
+    position: relative;
+    margin-bottom: 6rem;
+    &_child {
+      width: 100%;
+      height: 100%;
+      animation: elementAnimation 12s ease 6s infinite;
     }
-
     &_wrapper {
       position: absolute;
       z-index: -1;
       &1 {
-        top: 50vh;
-        right: 30vw;
+        bottom: 5vh;
+        right: -1vw;
         width: var(--element-base-size);
         height: var(--element-base-size);
         @include respond(tab-land) {
-          top: 48vh;
-          right: 20vw;
         }
         @include respond(tab-port) {
-          top: 48vh;
-          right: 15vw;
         }
         @include respond(phone) {
-          top: 45vh;
-          right: 7vw;
         }
         @include respond(small-phone) {
-          right: 7vw;
         }
       }
       &2 {
-        top: 10vh;
-        right: 20vw;
+        top: -8vh;
+        right: -6vw;
         width: calc(var(--element-base-size) * 2);
         height: calc(var(--element-base-size) * 2);
         @include respond(tab-land) {
@@ -64,16 +51,14 @@
         @include respond(tab-port) {
         }
         @include respond(phone) {
-          top: 14vh;
         }
         @include respond(small-phone) {
-          top: 16vh;
-          right: 10vw;
         }
       }
       &3 {
-        top: 16vh;
-        left: 20vw;
+        // top: 0;
+        top: -8vh;
+        left: -5vw;
         width: calc(var(--element-base-size) + 1rem);
         height: calc(var(--element-base-size) + 1rem);
         @include respond(tab-land) {
@@ -86,42 +71,46 @@
         }
       }
       &4 {
-        bottom: 30vh;
-        right: 20vw;
+        bottom: -4vh;
+        left: -1vw;
         width: calc(var(--element-base-size) + 2rem);
         height: calc(var(--element-base-size) + 2rem);
         @include respond(tab-land) {
-          bottom: 10vh;
         }
         @include respond(tab-port) {
         }
-
         @include respond(phone) {
-          top: 55vh;
         }
       }
       &5 {
-        top: 50vh;
-        left: 27vw;
+        bottom: -23vh;
+        right: 1vw;
         width: calc(var(--element-base-size) + 1rem);
         height: calc(var(--element-base-size) + 1rem);
         @include respond(tab-land) {
-          left: 7vw;
         }
         @include respond(tab-port) {
         }
         @include respond(phone) {
-          top: 48vh;
-          left: 7vw;
         }
       }
     }
+  }
+  &__mainEl {
+    // --element-base-size: 6rem;
+    pointer-events: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    z-index: -1;
+    // @include respond(tab-land) {
+    //   --element-base-size: 4rem;
+    // }
 
-    &_child {
-      width: 100%;
-      height: 100%;
-      animation: elementAnimation 12s ease 6s infinite;
-    }
+    // @include respond(phone) {
+    //   --element-base-size: 3.5rem;
+    // }
   }
 
   &__wrapper {
@@ -133,7 +122,6 @@
 
   &__heading {
     all: unset;
-    margin-bottom: 6rem;
     font-family: Integral CF;
     font-weight: 900;
     font-size: min(10vh, 10vw);
@@ -218,18 +206,16 @@
       display: inline-block;
       cursor: pointer;
       font-size: min(2vw, 2vh);
-      // font-size: 2rem;
       color: white;
       white-space: nowrap;
       padding: min(3vw, 3vh) max(3vw, 3vh) min(3vw, 3vh) max(3vw, 3vh);
-      // padding: 3rem 5rem 3rem 5rem;
       background: rgb(116, 133, 225);
       background: linear-gradient(
         49deg,
         rgba(116, 133, 225, 1) 0%,
         rgba(116, 133, 225, 0.6783088235294117) 100%
       );
-      border-radius: 4rem;
+      border-radius: min(4vw, 4vh);
     }
   }
   &__tut {
