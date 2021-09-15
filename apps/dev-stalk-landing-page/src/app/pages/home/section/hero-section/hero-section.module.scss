@@ -22,6 +22,9 @@
     width: 100vw;
     top: 0;
     z-index: -1;
+    @include respond(tab-land) {
+      --element-base-size: 4rem;
+    }
 
     @include respond(phone) {
       --element-base-size: 3.5rem;
@@ -103,6 +106,7 @@
         width: calc(var(--element-base-size) + 1rem);
         height: calc(var(--element-base-size) + 1rem);
         @include respond(tab-land) {
+          left: 7vw;
         }
         @include respond(tab-port) {
         }
@@ -132,9 +136,9 @@
     margin-bottom: 6rem;
     font-family: Integral CF;
     font-weight: 900;
-    font-size: 9rem;
+    font-size: min(10vh, 10vw);
     max-width: 65%;
-    line-height: 1;
+    line-height: 1.1;
     text-transform: uppercase;
     color: #1b1b1b;
     @include respond(tab-land) {
@@ -157,8 +161,8 @@
     font-family: Manrope;
     font-variation-settings: 'wght' 500;
     width: 100%;
-    font-size: 2rem;
-    margin-bottom: 9rem;
+    font-size: min(2vw, 2vh);
+    margin-bottom: 7vh;
     overflow: hidden;
     @include respond(tab-land) {
     }
@@ -183,7 +187,7 @@
       --width-state: 0vw;
       display: inline;
       font-variation-settings: 'wght' 700;
-      font-size: 1.8rem;
+      font-size: min(2vw, 2vh);
       background-color: transparent;
       outline: none;
       border: none;
@@ -208,21 +212,17 @@
           width: 40vw;
         }
       }
-      @include respond(tab-land) {
-        font-size: 1.6rem;
-      }
-      @include respond(phone) {
-        font-size: 1.3rem;
-      }
     }
     &__button {
       font-variation-settings: 'wght' 500;
       display: inline-block;
       cursor: pointer;
-      font-size: 2rem;
+      font-size: min(2vw, 2vh);
+      // font-size: 2rem;
       color: white;
       white-space: nowrap;
-      padding: 3rem 5rem 3rem 5rem;
+      padding: min(3vw, 3vh) max(3vw, 3vh) min(3vw, 3vh) max(3vw, 3vh);
+      // padding: 3rem 5rem 3rem 5rem;
       background: rgb(116, 133, 225);
       background: linear-gradient(
         49deg,
@@ -230,14 +230,6 @@
         rgba(116, 133, 225, 0.6783088235294117) 100%
       );
       border-radius: 4rem;
-      @include respond(tab-land) {
-        padding: 3rem 3rem 3rem 3rem;
-        font-size: 1.7rem;
-      }
-      @include respond(phone) {
-        padding: 2rem 3rem 2rem 3rem;
-        font-size: 1.3rem;
-      }
     }
   }
   &__tut {

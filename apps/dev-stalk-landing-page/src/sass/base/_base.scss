@@ -15,11 +15,15 @@ html {
   @include respond(tab-port) {
     font-size: 50%;
   }
-  @include respond(big-desktop) {
-    font-size: 75%;
+
+  @include respond(phone) {
+    font-size: 25%;
   }
   @include respond(small-phone) {
     font-size: 25%;
+  }
+  @include respond(big-desktop) {
+    font-size: 75%;
   }
 }
 
