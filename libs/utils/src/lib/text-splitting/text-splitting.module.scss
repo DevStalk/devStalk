@@ -2,6 +2,7 @@
 .splitting .word,
 .splitting .char {
   overflow: hidden;
+  display: inline-block;
   &::before {
     content: '';
     display: block;
@@ -9,14 +10,6 @@
     width: 0;
     margin-top: calc((1 - 1.4) * 0.5em);
   }
-}
-
-.splitting {
-  white-space: nowrap;
-}
-
-.splitting .word {
-  display: inline-block;
 }
 
 /* Pseudo-element chars */

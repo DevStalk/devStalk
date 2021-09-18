@@ -12,11 +12,11 @@ import { TextSplitting } from '@dev-stalk/utils';
 
 // ----------------------Image Imports------------------------------------- //
 import { ReactComponent as ScrollArrow } from '../../../../../assets/components/scrollArrow.svg';
-import android from '../../../../../assets/components/3d/android-free/Android_perspective_matte.png';
-import code from '../../../../../assets/components/3d/code-free/Code_perspective_matte.png';
-import comment from '../../../../../assets/components/3d/comment-free/Comment_perspective_matte.png';
-import ethereum from '../../../../../assets/components/3d/ethereum-free/Ethereum_perspective_matte.png';
-import rocket from '../../../../../assets/components/3d/rocket-free/Rocket_perspective_matte.png';
+import android from '../../../../../assets/components/3d/Android_perspective_matte.webp';
+import code from '../../../../../assets/components/3d/Code_perspective_matte.webp';
+import comment from '../../../../../assets/components/3d/Comment_perspective_matte.webp';
+import ethereum from '../../../../../assets/components/3d/Ethereum_perspective_matte.webp';
+import rocket from '../../../../../assets/components/3d/Rocket_perspective_matte.webp';
 // ----------------------Image Imports------------------------------------- //
 
 // ----------------------Style Sheet Imports------------------------------------- //
@@ -68,24 +68,13 @@ export function HeroSection(props: HeroSectionProps) {
     .to('.' + styles.htn, { opacity: 0 }, '-=.5');
 
   const timeline = gsap.timeline();
-  const hero__ctaTween = gsap.fromTo(
-    '.' + styles.hero__cta,
-    { opacity: 0, y: 100 },
-    { opacity: 1, y: 0 }
-  );
-  const hero__tutTween = gsap.fromTo(
-    '.' + styles.hero__tut,
-    { opacity: 0, y: 100 },
-    { opacity: 1, y: 0 }
-  );
   const letterAnimation = gsap.fromTo(
     '.' + styles.hero__letterAnimation,
-    { y: -100 },
+    { y: -200 },
     {
       y: 0,
-      stagger: { each: 0.01 },
-      // ease: 'back.out(2)',
-      ease: 'power2.out',
+      stagger: { each: 0.02 },
+      ease: 'power1.out',
     }
   );
   const elementsAnimation = gsap.fromTo(
@@ -98,11 +87,27 @@ export function HeroSection(props: HeroSectionProps) {
       ease: 'power1.out',
     }
   );
+  const loadingAnimation = gsap.to('.' + styles.hero__loading, {
+    height: 0,
+    ease: 'Expo.easeOut',
+    duration: 2,
+  });
+  const textAnimation = gsap.fromTo(
+    '.' + styles.hero__heading,
+    {
+      color: 'white',
+    },
+    { color: '#1b1b1b' }
+  );
+  const indexationAnimation = gsap.to('.' + styles.htn, {
+    opacity: 1,
+  });
   timeline
     .add(letterAnimation)
-    .add(elementsAnimation, '-=.5')
-    .add(hero__ctaTween, '-=.5')
-    .add(hero__tutTween, '-=.3');
+    .add(loadingAnimation, '+=.3')
+    .add(textAnimation, '-=1.9')
+    .add(elementsAnimation, '-=1')
+    .add(indexationAnimation, '-=.5');
 
   return (
     <div className={styles.hero__wrapper}>
@@ -127,6 +132,7 @@ const HeroMain = () => {
     <div className={styles.hero}>
       <div className={styles.hero__main}>
         <HeroMainSVGs />
+        <div className={styles.hero__loading}></div>
         <h2 className={styles.hero__heading}>
           {TextSplitting(
             'Create Your',
@@ -149,12 +155,13 @@ const HeroMain = () => {
         </h2>
       </div>
       <h4 className={styles.hero__subHeading}>
-        {TextSplitting(
-          'A new professional community for your independent jouney',
+        A new professional community for your independent journey.
+        {/* {TextSplitting(
+          'A new professional community for your independent journey',
           'letter',
           styles.hero__letterAnimation,
           styles.hero__subHeading_container
-        )}
+        )} */}
       </h4>
       <div className={`${styles.hero__cta} `}>
         <input
