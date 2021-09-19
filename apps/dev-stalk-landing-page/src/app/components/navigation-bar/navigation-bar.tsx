@@ -1,5 +1,5 @@
 import styles from './navigation-bar.module.scss';
-import { ReactComponent as DevStalkLogo } from '../../../assets/logo/devStalk3D.svg';
+import { ReactComponent as DevStalkLogo } from '../../../assets/logo/devStalk3DTransparentLogo.svg';
 import { motion } from 'framer-motion';
 import React from 'react';
 
