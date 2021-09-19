@@ -19,7 +19,7 @@ export function FirstSection(props: FirstSectionProps) {
         ease: 'power1.out',
         scrollTrigger: {
           trigger: '.' + styles.firstSection,
-          markers: true,
+          // markers: true,
         },
       }
     );
