@@ -32,7 +32,7 @@ export function TextSplitting(
 
     const css = {
       '--word-total': totalWord,
-      '--chars-total': totalChars,
+      '--char-total': totalChars,
     } as React.CSSProperties;
     return (
       <div
@@ -59,7 +59,7 @@ export function TextSplitting(
                   );
                 })}
               </span>
-              <span className={styles.whitespace}>&nbsp;</span>
+              {/* <span className={styles.whitespace}>&nbsp;</span> */}
             </>
           );
         })}

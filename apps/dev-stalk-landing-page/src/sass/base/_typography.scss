@@ -353,11 +353,10 @@ body {
   all: unset;
   color: inherit;
   font-family: Raleway;
-  text-align: center;
 }
 
 .tp1-heading-l1 {
-  font-size: 7rem;
+  font-size: 9rem;
 }
 
 .tp1-heading-l2 {
@@ -408,12 +407,4 @@ body {
     height: 20%;
     background-color: $color-primary;
   }
-}
-
-.primary-heading {
-  all: unset;
-  font-family: Integral CF;
-  font-weight: 900;
-  line-height: 1.1;
-  text-transform: uppercase;
 }

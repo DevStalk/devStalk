@@ -1,14 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // ----------------------Third Party Imports------------------------------------- //
-import React, { useEffect, useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 // ----------------------Third Party Imports------------------------------------- //
-
-// ----------------------Libraries------------------------------------- //
-// import { AnimatedLetter } from '@dev-stalk/ui-effects';
-import { TextSplitting } from '@dev-stalk/utils';
-// ----------------------Libraries------------------------------------- //
 
 // ----------------------Image Imports------------------------------------- //
 import { ReactComponent as ScrollArrow } from '../../../../../assets/components/scrollArrow.svg';
@@ -22,6 +17,7 @@ import rocket from '../../../../../assets/components/3d/Rocket_perspective_matte
 // ----------------------Style Sheet Imports------------------------------------- //
 import styles from './hero-section.module.scss';
 // ----------------------Style Sheet Imports------------------------------------- //
+import LoadingScreen from '../../../../components/loading-screen/loading-screen';
 
 /* eslint-disable-next-line */
 export interface HeroSectionProps {}
@@ -33,98 +29,50 @@ export interface HeroSectionProps {}
 export function HeroSection(props: HeroSectionProps) {
   gsap.registerPlugin(ScrollTrigger);
 
-  const opacityTL = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.' + styles.hero,
-      start: 'top top',
-      end: '+=600px top',
-      pin: true,
-      pinSpacing: false,
-      scrub: 0.2,
-      // markers: true,
-    },
+  useEffect(() => {
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.' + styles.hero__wrapper,
+        pin: '.' + styles.hero,
+        pinSpacing: false,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.5,
+        // markers: true,
+      },
+    });
+
+    timeline
+      .to('.' + styles.hero, { opacity: 0, duration: 0.5 })
+      .to('.' + styles.htn, { x: '80%', y: '-80%', ease: 'power1.out' }, '0')
+      .to('.' + styles.htn, { x: '160%', y: '-160%', ease: 'power1.out' })
+      .to('.' + styles.htn, { x: '240%', y: '-240%', ease: 'power1.out' })
+      .to('.' + styles.htn, { x: '320%', y: '-320%', ease: 'power1.out' })
+      .to('.' + styles.htn, { opacity: 0 }, '-=.5');
   });
-
-  opacityTL.fromTo(
-    '.' + styles.hero,
-    { opacity: 1 },
-    { opacity: 0, duration: 10 }
-  );
-
-  const htnTL = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.' + styles.hero__wrapper,
-      start: 'top top',
-      end: 'bottom center',
-      scrub: 0.5,
-    },
-  });
-
-  htnTL
-    .to('.' + styles.htn, { x: '80%', y: '-80%', ease: 'power1.out' })
-    .to('.' + styles.htn, { x: '160%', y: '-160%', ease: 'power1.out' })
-    .to('.' + styles.htn, { x: '240%', y: '-240%', ease: 'power1.out' })
-    .to('.' + styles.htn, { x: '320%', y: '-320%', ease: 'power1.out' })
-    .to('.' + styles.htn, { opacity: 0 }, '-=.5');
-
-  const timeline = gsap.timeline();
-  const letterAnimation = gsap.fromTo(
-    '.' + styles.hero__letterAnimation,
-    { y: -200 },
-    {
-      y: 0,
-      stagger: { each: 0.02 },
-      ease: 'power1.out',
-    }
-  );
-  const elementsAnimation = gsap.fromTo(
-    '.' + styles.hero__main_wrapper,
-    { scale: 3, opacity: 0 },
-    {
-      scale: 1,
-      opacity: 1,
-      stagger: { each: 0.1 },
-      ease: 'power1.out',
-    }
-  );
-  const loadingAnimation = gsap.to('.' + styles.hero__loading, {
-    height: 0,
-    ease: 'Expo.easeOut',
-    duration: 2,
-  });
-  const textAnimation = gsap.fromTo(
-    '.' + styles.hero__heading,
-    {
-      color: 'white',
-    },
-    { color: '#1b1b1b' }
-  );
-  const indexationAnimation = gsap.to('.' + styles.htn, {
-    opacity: 1,
-  });
-  timeline
-    .add(letterAnimation)
-    .add(loadingAnimation, '+=.3')
-    .add(textAnimation, '-=1.9')
-    .add(elementsAnimation, '-=1')
-    .add(indexationAnimation, '-=.5');
-
+  // const timeline = gsap.timeline().fromTo(
+  //   '.' + styles.hero__main_wrapper,
+  //   { scale: 3, opacity: 0 },
+  //   {
+  //     scale: 1,
+  //     opacity: 1,
+  //     stagger: { each: 0.1 },
+  //     ease: 'power1.out',
+  //   }
+  // );
   return (
     <div className={styles.hero__wrapper}>
+      <LoadingScreen />
       <HeroMain />
       <HeroToNext />
     </div>
   );
 }
-///////////////////////////////////////////////////////////////////
-// End of Main Section
-///////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////
 // Hero Main Section
 ///////////////////////////////////////////////////////////////////
 
-// ----------------------Logic------------------------------------- //
 const HeroMain = () => {
   const [clicked, setClicked] = useState(false);
   const [input, setInput] = useState('');
@@ -132,38 +80,18 @@ const HeroMain = () => {
     <div className={styles.hero}>
       <div className={styles.hero__main}>
         <HeroMainSVGs />
-        <div className={styles.hero__loading}></div>
         <h2 className={styles.hero__heading}>
-          {TextSplitting(
-            'Create Your',
-            'letter',
-            styles.hero__letterAnimation,
-            styles.hero__heading_container
-          )}
-          {TextSplitting(
-            'Developer',
-            'letter',
-            styles.hero__letterAnimation,
-            styles.hero__heading_container
-          )}
-          {TextSplitting(
-            'Identity',
-            'letter',
-            styles.hero__letterAnimation,
-            styles.hero__heading_container
-          )}
+          Create Your <br /> Developer <br /> Identity
         </h2>
       </div>
       <h4 className={styles.hero__subHeading}>
         A new professional community for your independent journey.
-        {/* {TextSplitting(
-          'A new professional community for your independent journey',
-          'letter',
-          styles.hero__letterAnimation,
-          styles.hero__subHeading_container
-        )} */}
       </h4>
-      <div className={`${styles.hero__cta} `}>
+      <div
+        className={`${styles.hero__cta} ${
+          clicked ? styles.hero__cta__trans : ''
+        }`}
+      >
         <input
           className={`${styles.hero__cta__input} ${
             clicked ? styles.hero__cta__input__clicked : ''
@@ -195,10 +123,6 @@ const HeroMain = () => {
     </div>
   );
 };
-
-///////////////////////////////////////////////////////////////////
-// End of Hero Main
-///////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 // Extra Items

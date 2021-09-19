@@ -7,32 +7,22 @@
   top: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
   background-color: $white;
   z-index: 1;
-  @include respond(phone) {
-    justify-content: flex-start;
-  }
-
-  &__loading {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: #14e2da;
+  justify-content: flex-start;
+  &__wrapper {
+    position: relative;
+    background-color: #121212;
+    height: 300vh;
   }
 
   &__main {
     --element-base-size: min(7vw, 7vh);
     position: relative;
-    margin-bottom: 6rem;
-    z-index: 4;
-    @include respond(phone) {
-      margin-top: 20vh;
-    }
+    margin-top: 20vh;
+    margin-bottom: 9vh;
     &_child {
       width: 100%;
       height: 100%;
@@ -40,7 +30,6 @@
     }
     &_wrapper {
       position: absolute;
-      z-index: -1;
       &1 {
         bottom: 5vh;
         right: -1vw;
@@ -110,33 +99,25 @@
       }
     }
   }
-  &__wrapper {
-    position: relative;
-    background-color: #121212;
-    height: 300vh;
-  }
-
   &__heading {
     all: unset;
     font-family: Integral CF;
     font-weight: 900;
     font-size: min(10vh, 10vw);
-    max-width: 65%;
-    line-height: 1.1;
+    max-width: 65vw;
     text-transform: uppercase;
-    z-index: 101;
     @include respond(tab-land) {
-      max-width: 80%;
+      max-width: 80vw;
     }
     @include respond(tab-port) {
-      max-width: 80%;
+      max-width: 80vw;
     }
 
     @include respond(phone) {
-      max-width: 100%;
+      max-width: 95vw;
     }
     @include respond(small-phone) {
-      max-width: 100%;
+      max-width: 95vw;
     }
   }
   &__subHeading {
@@ -146,26 +127,24 @@
     font-variation-settings: 'wght' 500;
     width: 100%;
     font-size: min(2vw, 2vh);
-    margin-bottom: 7vh;
-    overflow: hidden;
-    @include respond(tab-land) {
-    }
-    @include respond(tab-port) {
-    }
+    margin-bottom: 10vh;
     @include respond(phone) {
-    }
-    @include respond(small-phone) {
-      max-width: 80%;
+      max-width: 80vw;
     }
   }
   &__cta {
     border-radius: 5rem;
     display: flex;
-    background-color: #e8e8e8;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: auto;
+    background-color: transparent;
+    transition: background-color 0s ease 1s;
+    &__trans {
+      transition: background-color 0s ease;
+      background-color: #e8e8e8;
+    }
 
     &__input {
       --width-state: 0vw;
@@ -177,8 +156,9 @@
       border: none;
       width: 0;
       height: 100%;
-      transition: width 1s cubic-bezier(0.48, 2.73, 0.2, 0.26);
+      transition: margin 0s ease 1s, width 1s ease;
       &__clicked {
+        transition: width 1s cubic-bezier(0.48, 2.73, 0.2, 0.26);
         margin-left: 4%;
         margin-right: 4%;
         display: block;
@@ -270,7 +250,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  opacity: 0;
   z-index: 2;
   &__child {
     will-change: transform;

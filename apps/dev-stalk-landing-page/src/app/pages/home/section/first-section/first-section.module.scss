@@ -1,19 +1,20 @@
+@import '../../../../../sass/abstracts/variables';
+@import '../../../../../sass/abstracts/mixins';
+
 .firstSection {
   height: 100vh;
   background-color: #121212;
   color: white;
-  padding: 0rem 20rem 0rem 20rem;
-  margin: auto;
-}
-
-.moveUp {
-  transform: translateY(0);
-}
-
-.moveDown {
-  transform: translateY(-10px);
-}
-
-.word {
-  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  &__heading {
+    margin-top: 20vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    &__letter {
+      top: 300;
+    }
+  }
 }

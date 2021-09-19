@@ -52,6 +52,7 @@
 
   /* Pecent (0-1) of the line's position */
   --line-percent: calc(var(--line-index) / var(--line-total));
+  margin-right: max(1.5vw, 1.5vh);
 }
 
 .splitting .char {
