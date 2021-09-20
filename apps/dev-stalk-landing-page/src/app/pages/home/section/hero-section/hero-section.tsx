@@ -18,6 +18,7 @@ import rocket from '../../../../../assets/components/3d/Rocket_perspective_matte
 import styles from './hero-section.module.scss';
 // ----------------------Style Sheet Imports------------------------------------- //
 import LoadingScreen from '../../../../components/loading-screen/loading-screen';
+import CtaButton from '../../../../components/cta-button/cta-button';
 
 /* eslint-disable-next-line */
 export interface HeroSectionProps {}
@@ -50,16 +51,6 @@ export function HeroSection(props: HeroSectionProps) {
       .to('.' + styles.htn, { x: '320%', y: '-320%', ease: 'power1.out' })
       .to('.' + styles.htn, { opacity: 0 }, '-=.5');
   });
-  // const timeline = gsap.timeline().fromTo(
-  //   '.' + styles.hero__main_wrapper,
-  //   { scale: 3, opacity: 0 },
-  //   {
-  //     scale: 1,
-  //     opacity: 1,
-  //     stagger: { each: 0.1 },
-  //     ease: 'power1.out',
-  //   }
-  // );
   return (
     <div className={styles.hero__wrapper}>
       <LoadingScreen />
@@ -74,8 +65,6 @@ export function HeroSection(props: HeroSectionProps) {
 ///////////////////////////////////////////////////////////////////
 
 const HeroMain = () => {
-  const [clicked, setClicked] = useState(false);
-  const [input, setInput] = useState('');
   return (
     <div className={styles.hero}>
       <div className={styles.hero__main}>
@@ -87,35 +76,7 @@ const HeroMain = () => {
       <h4 className={styles.hero__subHeading}>
         A new professional community for your independent journey.
       </h4>
-      <div
-        className={`${styles.hero__cta} ${
-          clicked ? styles.hero__cta__trans : ''
-        }`}
-      >
-        <input
-          className={`${styles.hero__cta__input} ${
-            clicked ? styles.hero__cta__input__clicked : ''
-          } `}
-          placeholder="iwant@developeridentity.com"
-          onChange={(e) => setInput(e.target.value)}
-        ></input>
-        <a
-          onClick={(e) => {
-            if (clicked) {
-              if (input === '') {
-                setClicked(false);
-              } else {
-                console.log('done');
-              }
-            } else {
-              setClicked(true);
-            }
-          }}
-          className={styles.hero__cta__button}
-        >
-          Join Waitlist
-        </a>
-      </div>
+      <CtaButton />
       <div className={`${styles.hero__tut} slideUp`}>
         <ScrollArrow className={styles.hero__tut__arrow} />
         <span>Scroll</span>
@@ -129,7 +90,6 @@ const HeroMain = () => {
 const HeroMainSVGs = () => {
   return (
     <>
-      {/* <div className={styles.hero__main}> */}
       <div
         className={` ${styles.hero__main_wrapper} ${styles.hero__main_wrapper1} `}
       >
@@ -159,7 +119,6 @@ const HeroMainSVGs = () => {
       >
         <img className={styles.hero__main_child} src={rocket} alt="rocket" />
       </div>
-      {/* </div> */}
     </>
   );
 };

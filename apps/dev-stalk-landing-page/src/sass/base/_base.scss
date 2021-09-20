@@ -38,6 +38,10 @@ a {
   text-decoration: none;
 }
 
+#portal {
+  z-index: 10000;
+}
+
 ::selection {
   background-color: $color-primary;
   color: $white;

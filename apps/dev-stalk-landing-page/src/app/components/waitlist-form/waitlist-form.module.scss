@@ -1,0 +1,60 @@
+.waitlistForm {
+  &__wrapper {
+    position: fixed;
+    top: 50vh;
+    left: -50vw;
+    width: 100vw;
+    height: 70vh;
+    background-color: white;
+    border-radius: 30px 30px 0px 0px;
+  }
+  &__form {
+    margin: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 10rem;
+  }
+  &__field {
+    all: unset;
+    font-size: 2rem;
+    height: 3rem;
+    background-color: #e8e8e8;
+    padding: 2rem 3rem 2rem 3rem;
+    border-radius: 30px;
+    &__container {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10rem;
+    }
+    &__label {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      margin-left: 3rem;
+    }
+  }
+  &__submit {
+    margin: auto;
+    all: unset;
+    font-variation-settings: 'wght' 400;
+    display: inline-block;
+    cursor: pointer;
+    font-size: min(4vw, 4vh);
+    color: white;
+    white-space: nowrap;
+    padding: min(3vw, 3vh) max(6vw, 6vh) min(3vw, 3vh) max(6vw, 6vh);
+    background: rgb(116, 133, 225);
+    background: linear-gradient(
+      49deg,
+      rgba(116, 133, 225, 1) 0%,
+      rgba(116, 133, 225, 0.6783088235294117) 100%
+    );
+    border-radius: min(6vw, 6vh);
+  }
+}
