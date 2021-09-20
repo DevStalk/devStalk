@@ -47,10 +47,11 @@ export function WaitlistForm(props: WaitlistFormProps) {
             <h4 className={styles.waitlistForm__description}>
               Experience the best & Find the unknown
             </h4>
+            {props.status === 'error' && (
+              <div className="mc__alert mc__alert--error">{props.message}</div>
+            )}
           </div>
-          {/* {props.status === 'error' && (
-            <div className="mc__alert mc__alert--error">{props.message}</div>
-          )} */}
+
           <div className={styles.waitlistForm__field__container}>
             <label className={styles.waitlistForm__field__label}>Email:</label>
             <input
@@ -69,8 +70,9 @@ export function WaitlistForm(props: WaitlistFormProps) {
         </form>
       ) : (
         <div className={styles.waitlistForm__success}>
-          <h2 className={styles.waitlistForm__title}>
-            Thanks for joining our family we will let update you regularly
+          <h2 className={styles.waitlistForm__success__title}>
+            Welcome to our family,
+            <br /> We will update you regularly
           </h2>
         </div>
       )}

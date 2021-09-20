@@ -6,7 +6,8 @@ import WaitlistForm from '../waitlist-form/waitlist-form';
 export interface MailchimpFormContainerProps {}
 
 export function MailchimpFormContainer(props: MailchimpFormContainerProps) {
-  const postUrl = `https://gmail.us6.list-manage.com/subscribe/post?u=${process.env.REACT_APP_MAILCHIMP_U}&id=${process.env.REACT_APP_MAILCHIMP_ID}`;
+  // const postUrl = `https://gmail.us6.list-manage.com/subscribe/post?u=${process.env.REACT_APP_MAILCHIMP_U}&id=${process.env.REACT_APP_MAILCHIMP_ID}`;
+  const postUrl = `https://gmail.us6.list-manage.com/subscribe/post?u=b10951f32f4846a0956320b0e&id=56144d7640`;
   return (
     <div className={styles.mailchimp__formContainer}>
       <MailchimpSubscribe
