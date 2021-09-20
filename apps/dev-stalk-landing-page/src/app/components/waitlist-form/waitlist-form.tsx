@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { EmailFormFields } from 'react-mailchimp-subscribe';
 import styles from './waitlist-form.module.scss';
 import gsap from 'gsap';
@@ -15,6 +15,7 @@ export function WaitlistForm(props: WaitlistFormProps) {
   const [email, setEmail] = useState('');
   const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
 
+  const wrapper = useRef() as React.RefObject<HTMLDivElement>;
   useEffect(() => {
     if (props.status === 'success') clearFields();
   });
@@ -28,14 +29,14 @@ export function WaitlistForm(props: WaitlistFormProps) {
   };
 
   useEffect(() => {
-    const height = isMobile ? 'min(100vh, 90rem)' : 'min(100vh, 70rem)';
     gsap.to('.' + styles.waitlistForm__wrapper, {
-      height: height,
+      bottom: 0,
       ease: 'power3.out',
     });
   });
+
   return (
-    <div className={styles.waitlistForm__wrapper}>
+    <div ref={wrapper} className={styles.waitlistForm__wrapper}>
       {props.status !== 'success' ? (
         <form
           className={styles.waitlistForm__form}

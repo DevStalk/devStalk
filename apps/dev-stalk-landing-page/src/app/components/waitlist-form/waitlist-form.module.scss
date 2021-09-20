@@ -4,18 +4,18 @@
 .waitlistForm {
   &__wrapper {
     position: absolute;
-    bottom: 0;
-    height: 70vh;
     width: 100vw;
     background-color: white;
     border-radius: min(3vw, 3vh) min(3vw, 3vh) 0px 0px;
-    padding: 6rem;
 
     @include respond(tab-land) {
+      bottom: -min(100vh, 70rem);
       height: min(100vh, 70rem);
+      padding: 6rem;
     }
 
     @include respond(phone) {
+      bottom: -min(100vh, 90rem);
       height: min(100vh, 90rem);
       padding: 9rem;
     }
@@ -82,12 +82,9 @@
     }
   }
   &__submit {
-    // position: absolute;
-    // bottom: 3vh;
     border: none;
     font-variation-settings: 'wght' 400;
     font-size: min(2vw, 2vh);
-    padding: min(3vw, 3vh) max(5vw, 5vh) min(3vw, 3vh) max(5vw, 5vh);
     cursor: pointer;
     color: white;
     white-space: nowrap;
@@ -97,11 +94,16 @@
       rgba(116, 133, 225, 1) 0%,
       rgba(116, 133, 225, 0.6783088235294117) 100%
     );
-    border-radius: min(3vw, 3vh);
+    border-radius: 10px;
+    @include respond(tab-land) {
+      width: 100%;
+      font-size: min(2rem, 4vh);
+      padding: min(3rem, 4vh);
+    }
     @include respond(phone) {
       width: 100%;
       font-size: min(3rem, 4vh);
-      padding: min(3rem, 4vh) max(4rem, 5vh) min(3rem, 4vh) max(4rem, 5vh);
+      padding: min(5rem, 4vh);
     }
   }
 }
