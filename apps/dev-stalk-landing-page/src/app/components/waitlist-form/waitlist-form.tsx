@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EmailFormFields } from 'react-mailchimp-subscribe';
 import styles from './waitlist-form.module.scss';
 import gsap from 'gsap';
+import { useMediaQuery } from 'react-responsive';
 
 /* eslint-disable-next-line */
 export interface WaitlistFormProps {
@@ -12,6 +13,7 @@ export interface WaitlistFormProps {
 
 export function WaitlistForm(props: WaitlistFormProps) {
   const [email, setEmail] = useState('');
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
 
   useEffect(() => {
     if (props.status === 'success') clearFields();
@@ -27,7 +29,7 @@ export function WaitlistForm(props: WaitlistFormProps) {
 
   useEffect(() => {
     gsap.to('.' + styles.waitlistForm__wrapper, {
-      top: '-20vh',
+      // height: '100%',
       ease: 'power3.out',
     });
   });
@@ -38,9 +40,12 @@ export function WaitlistForm(props: WaitlistFormProps) {
           className={styles.waitlistForm__form}
           onSubmit={(e) => handleSubmit(e)}
         >
-          <h2 className={styles.waitlistForm__title}>
-            Join our waitlist to experience the best and find the unknown
-          </h2>
+          <div style={{ textAlign: 'center' }}>
+            <h2 className={styles.waitlistForm__title}>Join our waitlist </h2>
+            <h4 className={styles.waitlistForm__description}>
+              Experience the best & Find the unknown
+            </h4>
+          </div>
           {/* {props.status === 'error' && (
             <div className="mc__alert mc__alert--error">{props.message}</div>
           )} */}

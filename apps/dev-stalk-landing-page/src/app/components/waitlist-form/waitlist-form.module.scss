@@ -1,60 +1,107 @@
+@import '../../../sass/abstracts/mixins';
+@import '../../../sass/abstracts/variables';
+
 .waitlistForm {
   &__wrapper {
-    position: fixed;
-    top: 50vh;
-    left: -50vw;
-    width: 100vw;
+    position: absolute;
+    bottom: 0;
     height: 70vh;
+    width: 100vw;
     background-color: white;
-    border-radius: 30px 30px 0px 0px;
+    border-radius: min(3vw, 3vh) min(3vw, 3vh) 0px 0px;
+    padding: 6rem;
+
+    @include respond(tab-land) {
+      height: min(100vh, 70rem);
+    }
+
+    @include respond(phone) {
+      height: min(100vh, 90rem);
+      padding: 9rem;
+    }
   }
   &__form {
-    margin: 6rem;
+    // position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    height: 100%;
   }
   &__title {
-    font-size: 5rem;
     text-align: center;
-    margin-bottom: 10rem;
+    text-transform: uppercase;
+    margin-bottom: min(3rem, 3vh);
+    // margin-bottom: min(10vw, 10vh);
+    @include respond(tab-land) {
+      font-size: min(4rem, 5.5vh);
+    }
+    @include respond(phone) {
+      font-size: min(5rem, 6vh);
+    }
+  }
+  &__description {
+    text-align: center;
+    color: rgba(black, 0.5);
+    @include respond(tab-land) {
+      font-size: min(3rem, 4vh);
+    }
+    @include respond(phone) {
+      font-size: min(3rem, 6vh);
+    }
   }
   &__field {
     all: unset;
-    font-size: 2rem;
-    height: 3rem;
+    font-size: min(2.4vw, 2.4vh);
+    height: min(4vw, 4vh);
     background-color: #e8e8e8;
-    padding: 2rem 3rem 2rem 3rem;
-    border-radius: 30px;
+    padding: min(2vw, 2vh) max(3vw, 3vh) min(2vw, 2vh) max(3vw, 3vh);
+
+    @include respond(tab-land) {
+      font-size: min(3rem, 4vh);
+      height: min(7rem, 9vh);
+    }
+    @include respond(phone) {
+      font-size: min(4rem, 4vh);
+      height: min(9rem, 9vh);
+    }
     &__container {
-      width: 90%;
-      margin: auto;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      margin-bottom: 10rem;
     }
     &__label {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
-      margin-left: 3rem;
+      font-size: min(4vw, 4vh);
+      margin-bottom: min(3vw, 3vh);
+      @include respond(tab-land) {
+        font-size: min(3rem, 4vh);
+      }
+      @include respond(phone) {
+        font-size: min(4rem, 4vh);
+      }
     }
   }
   &__submit {
-    margin: auto;
-    all: unset;
+    // position: absolute;
+    // bottom: 3vh;
+    border: none;
     font-variation-settings: 'wght' 400;
-    display: inline-block;
+    font-size: min(2vw, 2vh);
+    padding: min(3vw, 3vh) max(5vw, 5vh) min(3vw, 3vh) max(5vw, 5vh);
     cursor: pointer;
-    font-size: min(4vw, 4vh);
     color: white;
     white-space: nowrap;
-    padding: min(3vw, 3vh) max(6vw, 6vh) min(3vw, 3vh) max(6vw, 6vh);
     background: rgb(116, 133, 225);
     background: linear-gradient(
       49deg,
       rgba(116, 133, 225, 1) 0%,
       rgba(116, 133, 225, 0.6783088235294117) 100%
     );
-    border-radius: min(6vw, 6vh);
+    border-radius: min(3vw, 3vh);
+    @include respond(phone) {
+      width: 100%;
+      font-size: min(3rem, 4vh);
+      padding: min(3rem, 4vh) max(4rem, 5vh) min(3rem, 4vh) max(4rem, 5vh);
+    }
   }
 }

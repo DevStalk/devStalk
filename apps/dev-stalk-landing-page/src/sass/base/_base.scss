@@ -1,9 +1,18 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
 html,
 body,
 #root {
   max-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 html {
