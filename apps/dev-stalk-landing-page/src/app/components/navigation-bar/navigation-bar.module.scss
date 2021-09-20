@@ -13,23 +13,22 @@
     width: 100vw;
   }
   &__logo {
-    font-size: 1.4rem;
     display: flex;
     margin: 0 30vw 0 30vw;
     align-items: center;
     & svg {
-      width: 5.6rem;
-      height: 5.6rem;
-      margin-right: 1rem;
+      width: min(10rem, 5vh);
+      height: min(10rem, 5vh);
+      margin-right: min(4rem, 1vw);
     }
     & h1 {
       color: #1b1b1b;
       all: unset;
-      font-size: 4.5rem;
+      font-size: min(9rem, 5vh);
       font-family: Raleway;
       font-weight: 50;
       & span {
-        font-size: 4.7rem;
+        font-size: min(10rem, 5vh);
         font-weight: 600;
         font-family: Futura PT;
       }
