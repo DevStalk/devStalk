@@ -28,8 +28,9 @@ export function WaitlistForm(props: WaitlistFormProps) {
   };
 
   useEffect(() => {
+    const height = isMobile ? 'min(100vh, 90rem)' : 'min(100vh, 70rem)';
     gsap.to('.' + styles.waitlistForm__wrapper, {
-      // height: '100%',
+      height: height,
       ease: 'power3.out',
     });
   });
