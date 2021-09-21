@@ -29,6 +29,7 @@
     height: 100%;
   }
   &__title {
+    font-family: Integral CF;
     text-align: center;
     text-transform: uppercase;
     margin-bottom: min(3rem, 3vh);
@@ -42,7 +43,9 @@
   }
   &__description {
     text-align: center;
-    color: rgba(black, 0.5);
+    color: #d8d8d8;
+    font-weight: 500;
+
     margin-bottom: min(3rem, 3vh);
     @include respond(tab-land) {
       font-size: min(3rem, 4vh);
@@ -57,6 +60,7 @@
     height: min(4vw, 4vh);
     background-color: #e8e8e8;
     padding: min(2vw, 2vh) max(3vw, 3vh) min(2vw, 2vh) max(3vw, 3vh);
+    border-radius: 10px;
 
     @include respond(tab-land) {
       font-size: min(3rem, 4vh);

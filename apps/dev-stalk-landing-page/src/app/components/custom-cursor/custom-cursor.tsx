@@ -1,6 +1,7 @@
 import styles from './custom-cursor.module.scss';
 import React from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { ReactComponent as Cursor } from '../../../assets/components/3d/Cursor.svg';
 
 /* eslint-disable-next-line */
 export interface CustomCursorProps {}
@@ -39,7 +40,9 @@ export function CustomCursor(props: CustomCursorProps) {
         translateX: cursorXSpring,
         translateY: cursorYSpring,
       }}
-    ></motion.div>
+    >
+      <Cursor />
+    </motion.div>
   );
 }
 
