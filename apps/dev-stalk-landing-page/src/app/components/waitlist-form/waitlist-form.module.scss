@@ -43,14 +43,16 @@
   }
   &__description {
     text-align: center;
-    color: #d8d8d8;
+    color: #c8c8c8;
+    font-weight: 300;
+    font-family: Futura PT;
 
     margin-bottom: min(2rem, 3vh);
     @include respond(tab-land) {
-      font-size: min(2.5rem, 4vh);
+      font-size: min(3rem, 4vh);
     }
     @include respond(phone) {
-      font-size: min(3rem, 6vh);
+      font-size: min(3.5rem, 4vh);
     }
   }
   &__field {
