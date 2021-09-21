@@ -35,20 +35,19 @@
     margin-bottom: min(3rem, 3vh);
     // margin-bottom: min(10vw, 10vh);
     @include respond(tab-land) {
-      font-size: min(4rem, 5.5vh);
+      font-size: min(5rem, 6.3vh);
     }
     @include respond(phone) {
-      font-size: min(5rem, 6vh);
+      font-size: min(6rem, 6vh);
     }
   }
   &__description {
     text-align: center;
     color: #d8d8d8;
-    font-weight: 500;
 
-    margin-bottom: min(3rem, 3vh);
+    margin-bottom: min(2rem, 3vh);
     @include respond(tab-land) {
-      font-size: min(3rem, 4vh);
+      font-size: min(2.5rem, 4vh);
     }
     @include respond(phone) {
       font-size: min(3rem, 6vh);
