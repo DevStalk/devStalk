@@ -32,7 +32,7 @@
     font-family: Integral CF;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: min(3rem, 3vh);
+    margin-bottom: min(4rem, 3vh);
     // margin-bottom: min(10vw, 10vh);
     @include respond(tab-land) {
       font-size: min(5rem, 6.3vh);
@@ -49,10 +49,10 @@
 
     margin-bottom: min(2rem, 3vh);
     @include respond(tab-land) {
-      font-size: min(3rem, 4vh);
+      font-size: min(4rem, 4vh);
     }
     @include respond(phone) {
-      font-size: min(3.5rem, 4vh);
+      font-size: min(5rem, 4vh);
     }
   }
   &__field {
