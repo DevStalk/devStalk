@@ -54,7 +54,7 @@ export function NavigationBar(props: NavigationBarProps) {
             {/* about */}
           </a>
         </div>
-        <a href="/home" className={styles.navigation__logo}>
+        <a href="/" className={styles.navigation__logo}>
           <img
             src={onTop ? DevStalkLogo : DevStalkLogoInverted}
             alt="devStalk"
