@@ -6,13 +6,11 @@ import { ScrollTrigger } from 'gsap/src/all';
 import CtaButton from '../../../../components/cta-button/cta-button';
 import { ReactComponent as Logo } from '../../../../../assets/logo/Icon-Color.svg';
 import { ReactComponent as WordMark } from '../../../../../assets/logo/Wordmark-White.svg';
-import { useMediaQuery } from 'react-responsive';
 
 /* eslint-disable-next-line */
 export interface FirstSectionProps {}
 
 export function FirstSection(props: FirstSectionProps) {
-  let isTabletOrMobile = useMediaQuery({ query: '(max-width: 1200px)' });
   return (
     <div className={styles.firstSection}>
       <div className={styles.firstSection__left}>
