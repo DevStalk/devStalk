@@ -18,7 +18,6 @@ export function FirstSection(props: FirstSectionProps) {
         start: 'top top',
         end: 'bottom+=900 top',
         pin: '.' + styles.firstSection,
-        markers: true,
         scrub: 0.5,
       },
     });
