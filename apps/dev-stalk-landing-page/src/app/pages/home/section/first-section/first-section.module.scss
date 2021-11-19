@@ -13,8 +13,9 @@
     justify-content: center;
     align-items: center;
     width: 40%;
+    opacity: 0;
     & svg {
-      width: 40rem;
+      width: min(40rem, 20vw);
     }
   }
   &__right {
@@ -23,6 +24,7 @@
     justify-content: center;
     align-items: center;
     width: 60%;
+    display: none;
     &__wrapper {
       width: 65%;
     }
@@ -42,15 +44,16 @@
     }
   }
   &__separator {
-    width: fit-content;
+    width: 1px;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    & div {
+    position: relative;
+    &__sep {
+      z-index: 100;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
       height: 80%;
-      width: 1px;
-      background-color: rgba(white, 0.3);
+      background-color: #5a5a5a;
     }
   }
 }
