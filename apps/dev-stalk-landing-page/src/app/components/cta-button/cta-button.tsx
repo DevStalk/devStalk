@@ -5,16 +5,22 @@ import { PortalModal } from '../portal-modal/portal-modal';
 import { MailchimpFormContainer } from '../mailchimp-form-container/mailchimp-form-container';
 
 /* eslint-disable-next-line */
-export interface CtaButtonProps {}
+export interface CtaButtonProps {
+  isMobile: boolean;
+}
 
 export function CtaButton(props: CtaButtonProps) {
   ///// State Management ////////////////
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1200px)' });
+  let isTabletOrMobile = useMediaQuery({ query: '(max-width: 1200px)' });
+  if (props.isMobile) {
+    isTabletOrMobile = isTabletOrMobile || props.isMobile;
+  }
 
   ///// UI ELements ////////////////////
   const ForDesktopOrLaptop = () => {
     const [input, setInput] = useState('');
-    const [clicked, setClicked] = useState(false);
+    // const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(true);
     return (
       <div
         className={`${styles.cta} ${styles.cta_d} ${

@@ -76,7 +76,7 @@ const HeroMain = () => {
       <h4 className={styles.hero__subHeading}>
         A new professional community for your independent journey.
       </h4>
-      <CtaButton />
+      <CtaButton isMobile={false} />
       <div className={`${styles.hero__tut} slideUp`}>
         <ScrollArrow className={styles.hero__tut__arrow} />
         <span>Scroll</span>
