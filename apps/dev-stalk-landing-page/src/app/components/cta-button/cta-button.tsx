@@ -10,10 +10,10 @@ export interface CtaButtonProps {}
 export function CtaButton(props: CtaButtonProps) {
   ///// State Management ////////////////
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1200px)' });
-  const [input, setInput] = useState('');
 
   ///// UI ELements ////////////////////
   const ForDesktopOrLaptop = () => {
+    const [input, setInput] = useState('');
     const [clicked, setClicked] = useState(false);
     return (
       <div
@@ -27,11 +27,13 @@ export function CtaButton(props: CtaButtonProps) {
           } `}
           placeholder="iwant@developeridentity.com"
           onChange={(e) => setInput(e.target.value)}
+          // onChange={(e) => console.log(e.target.value)}
         ></input>
         <a
           onClick={(e) => {
             if (clicked) {
               if (input === '') {
+                console.log(input);
                 setClicked(false);
               } else {
                 console.log('done');

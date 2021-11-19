@@ -3,18 +3,54 @@
 
 .firstSection {
   height: 100vh;
+  width: 100vw;
   background-color: #121212;
   color: white;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  &__heading {
-    margin-top: 20vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
-    &__letter {
-      top: 300;
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    & svg {
+      width: 40rem;
+    }
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    & h1 {
+      font-size: 4rem;
+      width: 60%;
+      margin-bottom: 10rem;
+    }
+    & h2 {
+      font-weight: 400;
+      font-size: 3rem;
+      width: 60%;
+      margin-bottom: 3rem;
+    }
+    & h3 {
+      font-weight: 400;
+      font-size: 2rem;
+      width: 60%;
+      margin-bottom: 15rem;
+    }
+  }
+  &__separator {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & div {
+      height: 80%;
+      width: 1px;
+      background-color: rgba(white, 0.3);
     }
   }
 }

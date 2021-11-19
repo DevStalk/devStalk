@@ -1,5 +1,9 @@
 import styles from './navigation-bar.module.scss';
-import { ReactComponent as DevStalkLogo } from '../../../assets/logo/devStalk3DTransparentLogo.svg';
+// import { ReactComponent as DevStalkLogo } from '../../../assets/logo/Lockup-Color.svg';
+// import { ReactComponent as DevStalkLogoInverted } from '../../../assets/logo/Lockup-Inverted-Color.svg';
+
+import DevStalkLogo from '../../../assets/logo/Lockup-Color.png';
+import DevStalkLogoInverted from '../../../assets/logo/Lockup-Inverted-Color.png';
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -51,10 +55,11 @@ export function NavigationBar(props: NavigationBarProps) {
           </a>
         </div>
         <a href="/home" className={styles.navigation__logo}>
-          <DevStalkLogo />
-          <h1 className={`${onTop ? '' : styles.bg}`}>
-            dev<span>Stalk</span>
-          </h1>
+          <img
+            src={onTop ? DevStalkLogo : DevStalkLogoInverted}
+            alt="devStalk"
+          />
+          {/* {onTop ? <DevStalkLogo /> : <DevStalkLogoInverted />} */}
         </a>
         <div className={styles.navigation__cta}>
           <a href="/register" className={`${onTop ? '' : styles.bg}`}>

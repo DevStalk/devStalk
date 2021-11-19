@@ -16,23 +16,12 @@
     display: flex;
     margin: 0 30vw 0 30vw;
     align-items: center;
-    & svg {
-      width: min(10rem, 5vh);
-      height: min(10rem, 5vh);
-      margin-right: min(4rem, 1vw);
+    & img {
+      width: min(25rem, 25vh);
     }
-    & h1 {
-      color: #1b1b1b;
-      all: unset;
-      font-size: min(9rem, 5vh);
-      font-family: Raleway;
-      font-weight: 50;
-      & span {
-        font-size: min(10rem, 5vh);
-        font-weight: 500;
-        font-family: Futura PT;
-      }
-    }
+    // & svg {
+    //   width: min(40rem, 30vh);
+    // }
   }
   &__menu {
     font-variation-settings: 'wght' 300;

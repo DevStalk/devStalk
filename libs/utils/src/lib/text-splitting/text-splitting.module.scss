@@ -3,13 +3,11 @@
 .splitting .char {
   overflow: hidden;
   display: inline-block;
-  // &::before {
-  //   content: '';
-  //   display: block;
-  //   height: 0;
-  //   width: 0;
-  //   margin-top: calc((1 - 1.4) * 0.5em);
-  // }
+}
+
+.splitting {
+  // display: inline-block;
+  height: min-content;
 }
 
 /* Pseudo-element chars */
