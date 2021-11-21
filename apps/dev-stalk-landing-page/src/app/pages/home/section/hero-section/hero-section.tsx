@@ -33,11 +33,11 @@ export function HeroSection(props: HeroSectionProps) {
   useEffect(() => {
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: '.' + styles.hero,
+        trigger: '.' + styles.hero__wrapper,
         pin: '.' + styles.hero,
         pinSpacing: false,
         start: 'top top',
-        end: 'bottom+=2900 bottom',
+        end: 'bottom bottom',
         scrub: 0.5,
       },
     });
@@ -69,13 +69,19 @@ const HeroMain = () => {
       <div className={styles.hero__main}>
         <HeroMainSVGs />
         <div className={styles.hero__heading}>
-          <div className={styles.hero__heading__wrap}>
+          <div
+            className={`${styles.hero__heading__wrap} primary-heading__wrap `}
+          >
             <h1 className="primary-heading">Create your</h1>
           </div>
-          <div className={styles.hero__heading__wrap}>
+          <div
+            className={`${styles.hero__heading__wrap} primary-heading__wrap `}
+          >
             <h1 className="primary-heading">developer</h1>
           </div>
-          <div className={styles.hero__heading__wrap}>
+          <div
+            className={`${styles.hero__heading__wrap} primary-heading__wrap `}
+          >
             <h1 className="primary-heading">identity</h1>
           </div>
         </div>
