@@ -4,7 +4,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger, CSSRulePlugin } from 'gsap/src/all';
 import CtaButton from '../../../../components/cta-button/cta-button';
 import { ReactComponent as Art } from '../../../../../assets/logo/art.svg';
-import { ReactComponent as WordMark } from '../../../../../assets/logo/Wordmark-White.svg';
+
+import Instagram from '../../../../../assets/social-media-components/instagram.png';
+import Twitter from '../../../../../assets/social-media-components/twitter.png';
+import LinkedIn from '../../../../../assets/social-media-components/linkedin.png';
+import Youtube from '../../../../../assets/social-media-components/youtube.png';
 
 /* eslint-disable-next-line */
 export interface FirstSectionProps {}
@@ -24,10 +28,14 @@ export function FirstSection(props: FirstSectionProps) {
         end: 'bottom top',
         pin: '.' + styles.firstSection,
         scrub: 0.5,
+        // markers: true,
+        // scrub: 0.5,
       },
     });
 
-    timeline.to('.' + styles.firstSection__art, { opacity: 1, duration: 1.8 });
+    timeline
+      .fromTo('.' + styles.firstSection__art, { opacity: 0 }, { opacity: 1 })
+      .fromTo('.' + styles.firstSection__content, { y: 800 }, { y: 0 });
   });
   return (
     <div className={styles.firstSection}>
@@ -42,6 +50,41 @@ export function FirstSection(props: FirstSectionProps) {
             Create your developer identity, signup now and get early access.
           </h3>
           <CtaButton isMobile={true} />
+          <div className={styles.firstSection__socials}>
+            <div className="social">
+              <div className="social-shadow"></div>
+              <a
+                href="https://www.instagram.com/devstalk_in/"
+                className="social-wrapper"
+              >
+                <img src={Instagram} alt="Instagram"></img>
+              </a>
+            </div>
+            <div className="social">
+              <div className="social-shadow"></div>
+              <a
+                href="https://www.linkedin.com/company/devstalk"
+                className="social-wrapper"
+              >
+                <img src={LinkedIn} alt="LinkedIn"></img>
+              </a>
+            </div>
+            {/* <div className="social">
+              <div className="social-shadow"></div>
+              <a href="#" className="social-wrapper">
+                <img src={Youtube} alt="Youtube"></img>
+              </a>
+            </div> */}
+            <div className="social">
+              <div className="social-shadow"></div>
+              <a
+                href="https://www.twitter.com/devStalk_in"
+                className="social-wrapper"
+              >
+                <img src={Twitter} alt="Twitter"></img>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div className={styles.firstSection__art}>

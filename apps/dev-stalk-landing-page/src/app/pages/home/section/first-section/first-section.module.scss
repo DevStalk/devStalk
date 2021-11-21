@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
 
   @include respond(phone) {
     align-items: flex-start;
@@ -24,7 +25,12 @@
     z-index: -2;
     & svg {
       height: 100%;
-      opacity: 0.1;
+      opacity: 0.25;
+    }
+    @include respond(phone) {
+      bottom: 0;
+      height: 60vh;
+      opacity: 0.25;
     }
   }
   &__content {
@@ -65,5 +71,11 @@
         margin-bottom: 9vh;
       }
     }
+  }
+  &__socials {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    --margin-right: 2rem;
   }
 }
