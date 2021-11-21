@@ -39,7 +39,7 @@ export function HeroSection(props: HeroSectionProps) {
         start: 'top top',
         end: 'bottom+=600 top',
         scrub: 0.5,
-        markers: true,
+        // markers: true,
       },
     });
 
