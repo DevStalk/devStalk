@@ -1,8 +1,7 @@
 import styles from './loading-screen.module.scss';
 
-import React, { useEffect, Dispatch, SetStateAction } from 'react';
+import React, { useEffect } from 'react';
 import gsap from 'gsap';
-import { TextSplitting } from '@dev-stalk/utils';
 
 /* eslint-disable-next-line */
 export interface LoadingScreenProps {}
@@ -17,11 +16,12 @@ export function LoadingScreen(props: LoadingScreenProps) {
       });
     const timeline = gsap.timeline();
     const letterAnimation = gsap.fromTo(
-      '.' + styles.hero__letterAnimation,
-      { y: -200 },
+      '.' + styles.loading__heading__wrap + ' h1',
+      { y: 113, rotateZ: '3deg' },
       {
         y: 0,
-        stagger: { each: 0.02 },
+        rotateZ: '0',
+        stagger: { each: 0.3 },
         ease: 'power1.out',
       }
     );
@@ -35,7 +35,6 @@ export function LoadingScreen(props: LoadingScreenProps) {
       .add(letterAnimation)
       .add(loadingExitAnimation, '+=.5');
   });
-
   return (
     <div className={styles.loading__screen}>
       <div className={styles.loading__wrapper}>
@@ -43,27 +42,16 @@ export function LoadingScreen(props: LoadingScreenProps) {
           <div className={styles.loading__loader}></div>
         </div>
       </div>
-      <div className={styles.loading__heading__wrapper}>
-        <h2 className={styles.loading__heading}>
-          {TextSplitting(
-            'Create Your',
-            'letter',
-            styles.loading__heading__letter,
-            styles.loading__heading__container
-          )}
-          {TextSplitting(
-            'Developer',
-            'letter',
-            styles.loading__heading__letter,
-            styles.loading__heading__container
-          )}
-          {TextSplitting(
-            'Identity',
-            'letter',
-            styles.loading__heading__letter,
-            styles.loading__heading__container
-          )}
-        </h2>
+      <div className={styles.loading__heading}>
+        <div className={styles.loading__heading__wrap}>
+          <h1 className="primary-heading">Create your</h1>
+        </div>
+        <div className={styles.loading__heading__wrap}>
+          <h1 className="primary-heading">developer</h1>
+        </div>
+        <div className={styles.loading__heading__wrap}>
+          <h1 className="primary-heading">identity</h1>
+        </div>
       </div>
     </div>
   );
