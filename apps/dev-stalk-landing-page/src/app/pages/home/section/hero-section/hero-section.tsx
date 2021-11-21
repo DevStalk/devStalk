@@ -35,9 +35,9 @@ export function HeroSection(props: HeroSectionProps) {
       scrollTrigger: {
         trigger: '.' + styles.hero__wrapper,
         pin: '.' + styles.hero,
-        pinSpacing: false,
+        pinSpacing: true,
         start: 'top top',
-        end: 'bottom bottom',
+        end: 'bottom+=500 top',
         scrub: 0.5,
       },
     });
@@ -48,7 +48,7 @@ export function HeroSection(props: HeroSectionProps) {
       .to('.' + styles.htn, { x: '160%', y: '-160%', ease: 'power1.out' })
       .to('.' + styles.htn, { x: '240%', y: '-240%', ease: 'power1.out' })
       .to('.' + styles.htn, { x: '320%', y: '-320%', ease: 'power1.out' })
-      .to('.' + styles.htn, { opacity: 0 }, '-=.5');
+      .to('.' + styles.htn, { opacity: 0 });
   });
   return (
     <div className={styles.hero__wrapper}>
