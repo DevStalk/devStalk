@@ -37,8 +37,9 @@ export function HeroSection(props: HeroSectionProps) {
         pin: '.' + styles.hero,
         pinSpacing: true,
         start: 'top top',
-        end: 'bottom+=800 top',
+        end: 'bottom+=600 top',
         scrub: 0.5,
+        markers: true,
       },
     });
 

@@ -13,6 +13,7 @@
   overflow: hidden;
 
   @include respond(phone) {
+    height: 100%;
     align-items: flex-start;
   }
 
