@@ -11,12 +11,17 @@
   align-items: center;
   position: relative;
 
+  @include respond(phone) {
+    align-items: flex-start;
+  }
+
   &__art {
     position: absolute;
     bottom: -10vh;
     right: 0;
     width: fit-content;
     height: 120vh;
+    z-index: -2;
     & svg {
       height: 100%;
       opacity: 0.1;
@@ -27,21 +32,38 @@
     justify-content: center;
     align-items: center;
     width: 50%;
-    margin-left: 10%;
+    margin: 10%;
+
+    @include respond(phone) {
+      height: 100%;
+      width: 100%;
+    }
 
     & h1 {
-      font-size: min(6vh, 2.5vw);
+      font-size: max(2.5vh, 2.5vw);
       margin-bottom: min(10rem, 11vh);
+      @include respond(phone) {
+        font-size: 4.5vh;
+        margin-bottom: 11vh;
+      }
     }
     & h2 {
       font-weight: 400;
-      font-size: min(5vh, 2vw);
+      font-size: max(2vh, 2vw);
       margin-bottom: min(3rem, 4vh);
+      @include respond(phone) {
+        font-size: 4vh;
+        margin-bottom: 5vh;
+      }
     }
     & h3 {
       font-weight: 400;
-      font-size: min(3.5vh, 1vw);
+      font-size: max(1vh, 1vw);
       margin-bottom: min(10rem, 11vh);
+      @include respond(phone) {
+        font-size: 2vh;
+        margin-bottom: 9vh;
+      }
     }
   }
 }
