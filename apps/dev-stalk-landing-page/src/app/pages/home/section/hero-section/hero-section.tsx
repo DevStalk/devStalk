@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // ----------------------Third Party Imports------------------------------------- //
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 // ----------------------Third Party Imports------------------------------------- //
@@ -33,13 +33,12 @@ export function HeroSection(props: HeroSectionProps) {
   useEffect(() => {
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: '.' + styles.hero__wrapper,
+        trigger: '.' + styles.hero,
         pin: '.' + styles.hero,
         pinSpacing: false,
         start: 'top top',
-        end: 'bottom bottom',
+        end: 'bottom+=2900 bottom',
         scrub: 0.5,
-        // markers: true,
       },
     });
 
@@ -69,18 +68,26 @@ const HeroMain = () => {
     <div className={styles.hero}>
       <div className={styles.hero__main}>
         <HeroMainSVGs />
-        <h2 className={styles.hero__heading}>
-          Create Your <br /> Developer <br /> Identity
-        </h2>
+        <div className={styles.hero__heading}>
+          <div className={styles.hero__heading__wrap}>
+            <h1 className="primary-heading">Create your</h1>
+          </div>
+          <div className={styles.hero__heading__wrap}>
+            <h1 className="primary-heading">developer</h1>
+          </div>
+          <div className={styles.hero__heading__wrap}>
+            <h1 className="primary-heading">identity</h1>
+          </div>
+        </div>
       </div>
       <h4 className={styles.hero__subHeading}>
         A new professional community for your independent journey.
       </h4>
-      <CtaButton isMobile={false} />
-      <div className={`${styles.hero__tut} slideUp`}>
+      <CtaButton isMobile={true} />
+      {/* <div className={`${styles.hero__tut} slideUp`}>
         <ScrollArrow className={styles.hero__tut__arrow} />
         <span>Scroll</span>
-      </div>
+      </div> */}
     </div>
   );
 };
