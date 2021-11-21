@@ -37,19 +37,34 @@
   }
 
   &__button {
-    font-variation-settings: 'wght' 500;
-    display: inline-block;
+    &__wrapper {
+      position: relative;
+    }
+    font-family: Integral CF;
+    display: block;
     cursor: pointer;
-    font-size: min(2vw, 2vh);
-    color: white;
+    font-size: min(1.9vw, 1.9vh);
+    text-transform: uppercase;
     white-space: nowrap;
-    padding: min(3vw, 3vh) max(3vw, 3vh) min(3vw, 3vh) max(3vw, 3vh);
-    background: rgb(116, 133, 225);
-    background: linear-gradient(
-      49deg,
-      rgba(116, 133, 225, 1) 0%,
-      rgba(116, 133, 225, 0.6783088235294117) 100%
-    );
-    border-radius: min(4vw, 4vh);
+    padding: 2rem 5rem;
+    background: #a2b0ff;
+    position: relative;
+    border: 2px solid #57689d;
+    color: #25385b;
+    transition: all 0.1s ease;
+    &:hover {
+      transform: translate(2px, -2px);
+    }
+
+    &__shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transform: translate(-6px, 6px);
+      background: #25385b;
+      z-index: -1;
+    }
   }
 }

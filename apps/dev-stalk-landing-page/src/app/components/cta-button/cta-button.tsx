@@ -74,12 +74,13 @@ export function CtaButton(props: CtaButtonProps) {
       <div className={`${styles.cta} ${styles.cta_m}`}>
         <a
           // href="/"
-          className={styles.cta__button}
+          className={styles.cta__button__wrapper}
           onClick={() => {
             setFormOpen(true);
           }}
         >
-          Join Waitlist
+          <span className={styles.cta__button__shadow}></span>
+          <span className={styles.cta__button}>Join Waitlist</span>
         </a>
         <PortalModal open={formOpen} onClose={formHandler}>
           <MailchimpFormContainer />
