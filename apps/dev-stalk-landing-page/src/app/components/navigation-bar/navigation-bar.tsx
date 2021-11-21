@@ -2,8 +2,9 @@ import styles from './navigation-bar.module.scss';
 // import { ReactComponent as DevStalkLogo } from '../../../assets/logo/Lockup-Color.svg';
 // import { ReactComponent as DevStalkLogoInverted } from '../../../assets/logo/Lockup-Inverted-Color.svg';
 
-import DevStalkLogo from '../../../assets/logo/Lockup-Color.png';
-import DevStalkLogoInverted from '../../../assets/logo/Lockup-Inverted-Color.png';
+import DevStalkLogo from '../../../assets/logo/Icon-White.png';
+import DevStalkLogoInverted from '../../../assets/logo/Icon-Color.png';
+import DevStalkWordMark from '../../../assets/logo/Wordmark-White.png';
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -49,23 +50,13 @@ export function NavigationBar(props: NavigationBarProps) {
       animate={visible ? 'visible' : 'hidden'}
     >
       <div className={styles.navigation}>
-        <div className={styles.navigation__menu}>
-          <a href="/about" className={`${onTop ? '' : styles.bg}`}>
-            {/* about */}
-          </a>
-        </div>
         <a href="/" className={styles.navigation__logo}>
           <img
             src={onTop ? DevStalkLogo : DevStalkLogoInverted}
             alt="devStalk"
           />
-          {/* {onTop ? <DevStalkLogo /> : <DevStalkLogoInverted />} */}
+          <img src={DevStalkWordMark} alt="devStalk"></img>
         </a>
-        <div className={styles.navigation__cta}>
-          <a href="/register" className={`${onTop ? '' : styles.bg}`}>
-            {/* Join Waitlist */}
-          </a>
-        </div>
       </div>
     </motion.div>
   );

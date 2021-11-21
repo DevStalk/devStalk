@@ -2,39 +2,31 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 3rem;
   &__wrapper {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 98;
-    padding: 3rem 0rem 2rem 0rem;
+    // padding: 3rem 0rem 2rem 0rem;
     width: 100vw;
   }
   &__logo {
     display: flex;
-    margin: 0 30vw 0 30vw;
-    align-items: center;
+    flex-direction: column;
+    // margin: 0 30vw 0 30vw;
+    // align-items: center;
     & img {
-      width: min(25rem, 25vh);
-    }
-    // & svg {
-    //   width: min(40rem, 30vh);
-    // }
-  }
-  &__menu {
-    font-variation-settings: 'wght' 300;
-    font-size: 1.8rem;
-  }
-  &__cta {
-    & a {
-      font-variation-settings: 'wght' 400;
-      font-size: 1.6rem;
+      width: min(8rem, 8vh);
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
     }
   }
 }
 
-.bg {
-  color: rgba(255, 255, 255, 1) !important;
-}
+// .bg {
+//   color: rgba(255, 255, 255, 1) !important;
+// }
