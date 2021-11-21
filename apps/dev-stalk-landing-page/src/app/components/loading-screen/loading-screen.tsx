@@ -43,13 +43,19 @@ export function LoadingScreen(props: LoadingScreenProps) {
         </div>
       </div>
       <div className={styles.loading__heading}>
-        <div className={styles.loading__heading__wrap}>
+        <div
+          className={`${styles.loading__heading__wrap} primary-heading__wrap`}
+        >
           <h1 className="primary-heading">Create your</h1>
         </div>
-        <div className={styles.loading__heading__wrap}>
+        <div
+          className={`${styles.loading__heading__wrap} primary-heading__wrap`}
+        >
           <h1 className="primary-heading">developer</h1>
         </div>
-        <div className={styles.loading__heading__wrap}>
+        <div
+          className={`${styles.loading__heading__wrap} primary-heading__wrap`}
+        >
           <h1 className="primary-heading">identity</h1>
         </div>
       </div>
