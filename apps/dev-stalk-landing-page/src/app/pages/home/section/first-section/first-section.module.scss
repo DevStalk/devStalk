@@ -4,13 +4,45 @@
 .firstSection {
   height: 100vh;
   width: 100vw;
-  // background-color: #121212;
-  background-color: #212121;
-  color: white;
+  background-color: #718191;
+  color: #eaeaff;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
+
+  &::before {
+    content: '';
+    height: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #a9a9a9;
+    -webkit-clip-path: polygon(
+      0% 0%,
+      5% 100%,
+      10% 0%,
+      15% 100%,
+      20% 0%,
+      25% 100%,
+      30% 0%,
+      35% 100%,
+      40% 0%,
+      45% 100%,
+      50% 0%,
+      55% 100%,
+      60% 0%,
+      65% 100%,
+      70% 0%,
+      75% 100%,
+      80% 0%,
+      85% 100%,
+      90% 0%,
+      95% 100%,
+      100% 0%
+    );
+  }
 
   @include respond(phone) {
     height: 100%;
@@ -19,19 +51,17 @@
 
   &__art {
     position: absolute;
-    bottom: -10vh;
-    right: 0;
+    bottom: 20vh;
+    right: 10vw;
+    height: 40vh;
     width: fit-content;
-    height: 120vh;
-    z-index: -2;
-    & svg {
+    z-index: 1;
+    & img {
       height: 100%;
-      opacity: 0.25;
     }
     @include respond(phone) {
-      bottom: 0;
-      height: 60vh;
-      opacity: 0.25;
+      bottom: 5vh;
+      height: 10vh;
     }
   }
   &__content {

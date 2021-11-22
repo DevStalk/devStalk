@@ -35,10 +35,10 @@ export function HeroSection(props: HeroSectionProps) {
       scrollTrigger: {
         trigger: '.' + styles.hero__wrapper,
         pin: '.' + styles.hero,
-        pinSpacing: true,
+        // pinSpacing: true,
         start: 'top top',
-        end: 'bottom+=600 top',
-        scrub: 0.5,
+        end: 'bottom top',
+        scrub: 1,
         // markers: true,
       },
     });

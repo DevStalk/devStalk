@@ -1,42 +1,15 @@
 import styles from './first-section.module.scss';
-import { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger, CSSRulePlugin } from 'gsap/src/all';
 import CtaButton from '../../../../components/cta-button/cta-button';
-import { ReactComponent as Art } from '../../../../../assets/logo/art.svg';
 
 import Instagram from '../../../../../assets/social-media-components/instagram.png';
 import Twitter from '../../../../../assets/social-media-components/twitter.png';
 import LinkedIn from '../../../../../assets/social-media-components/linkedin.png';
-import Youtube from '../../../../../assets/social-media-components/youtube.png';
+import ArtImage from '../../../../../assets/logo/Icon-Embossed.png';
 
 /* eslint-disable-next-line */
 export interface FirstSectionProps {}
 
 export function FirstSection(props: FirstSectionProps) {
-  gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
-
-  const rule = CSSRulePlugin.getRule(
-    '.' + styles.firstSection__separator__sep + ':before'
-  );
-
-  useEffect(() => {
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.' + styles.firstSection,
-        start: 'top top',
-        end: 'bottom top',
-        pin: '.' + styles.firstSection,
-        scrub: 0.5,
-        // markers: true,
-        // scrub: 0.5,
-      },
-    });
-
-    timeline
-      .fromTo('.' + styles.firstSection__art, { opacity: 0 }, { opacity: 1 })
-      .fromTo('.' + styles.firstSection__content, { y: 800 }, { y: 0 });
-  });
   return (
     <div className={styles.firstSection}>
       <div className={styles.firstSection__content}>
@@ -88,7 +61,8 @@ export function FirstSection(props: FirstSectionProps) {
         </div>
       </div>
       <div className={styles.firstSection__art}>
-        <Art />
+        <img src={ArtImage} alt="Art"></img>
+        {/* <Art /> */}
       </div>
     </div>
   );

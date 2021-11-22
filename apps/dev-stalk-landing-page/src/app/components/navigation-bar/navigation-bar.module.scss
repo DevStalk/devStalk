@@ -4,29 +4,23 @@
   align-items: center;
   justify-content: flex-start;
   padding: 3rem;
+
   &__wrapper {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 98;
-    // padding: 3rem 0rem 2rem 0rem;
     width: 100vw;
   }
   &__logo {
     display: flex;
     flex-direction: column;
-    // margin: 0 30vw 0 30vw;
-    // align-items: center;
     & img {
-      width: min(8rem, 8vh);
+      width: min(8vw, 8vh);
       &:not(:first-child) {
         margin-top: 1rem;
       }
     }
   }
 }
-
-// .bg {
-//   color: rgba(255, 255, 255, 1) !important;
-// }

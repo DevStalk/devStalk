@@ -3,8 +3,9 @@ import styles from './navigation-bar.module.scss';
 // import { ReactComponent as DevStalkLogoInverted } from '../../../assets/logo/Lockup-Inverted-Color.svg';
 
 import DevStalkLogo from '../../../assets/logo/Icon-White.png';
-import DevStalkLogoInverted from '../../../assets/logo/Icon-Color.png';
+import DevStalkLogoBlack from '../../../assets/logo/Icon-Color.png';
 import DevStalkWordMark from '../../../assets/logo/Wordmark-White.png';
+import DevStalkWordMarkBlack from '../../../assets/logo/Wordmark-Black.png';
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -51,11 +52,11 @@ export function NavigationBar(props: NavigationBarProps) {
     >
       <div className={styles.navigation}>
         <a href="/" className={styles.navigation__logo}>
+          <img src={onTop ? DevStalkLogo : DevStalkLogoBlack} alt="devStalk" />
           <img
-            src={onTop ? DevStalkLogo : DevStalkLogoInverted}
+            src={onTop ? DevStalkWordMark : DevStalkWordMarkBlack}
             alt="devStalk"
-          />
-          <img src={DevStalkWordMark} alt="devStalk"></img>
+          ></img>
         </a>
       </div>
     </motion.div>
