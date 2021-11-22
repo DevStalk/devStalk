@@ -53,6 +53,7 @@
     border: 2px solid #57689d;
     color: #25385b;
     transition: all 0.1s ease;
+    z-index: 2;
     &:hover {
       transform: translate(2px, -2px);
     }
@@ -65,7 +66,7 @@
       width: 100%;
       transform: translate(-6px, 6px);
       background: #25385b;
-      z-index: -1;
+      z-index: 1;
     }
   }
 }

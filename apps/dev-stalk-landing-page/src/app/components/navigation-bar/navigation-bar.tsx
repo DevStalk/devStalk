@@ -1,6 +1,4 @@
 import styles from './navigation-bar.module.scss';
-// import { ReactComponent as DevStalkLogo } from '../../../assets/logo/Lockup-Color.svg';
-// import { ReactComponent as DevStalkLogoInverted } from '../../../assets/logo/Lockup-Inverted-Color.svg';
 
 import DevStalkLogo from '../../../assets/logo/Icon-White.png';
 import DevStalkLogoBlack from '../../../assets/logo/Icon-Color.png';
