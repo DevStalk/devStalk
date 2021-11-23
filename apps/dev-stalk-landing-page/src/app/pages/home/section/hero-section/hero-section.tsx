@@ -31,20 +31,28 @@ export function HeroSection(props: HeroSectionProps) {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
+    const pin = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.' + styles.hero,
+        pin: '.' + styles.hero,
+        pinSpacing: true,
+        start: 'bottom bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: '.' + styles.hero__wrapper,
-        pin: '.' + styles.hero,
-        // pinSpacing: true,
         start: 'top top',
         end: 'bottom top',
         scrub: 1,
-        // markers: true,
       },
     });
 
     timeline
       .to('.' + styles.hero, { opacity: 0, duration: 0.5 })
+      // .to('.' + styles.hero + ' > *', { scale: 1.3, duration: 0.5 }, 0)
       .to('.' + styles.htn, { x: '80%', y: '-80%', ease: 'power1.out' }, '0')
       .to('.' + styles.htn, { x: '160%', y: '-160%', ease: 'power1.out' })
       .to('.' + styles.htn, { x: '240%', y: '-240%', ease: 'power1.out' })

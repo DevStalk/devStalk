@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  margin-right: var(--margin-right);
   &-shadow {
     z-index: 1;
     position: absolute;
@@ -23,11 +24,11 @@
     background-color: #a2b0ff;
     border: 2px solid #57689d;
     transition: all 0.1s ease;
+    & img {
+      height: 3rem;
+    }
     &:hover {
       transform: translate(3px, -3px);
     }
-  }
-  &:not(first-child) {
-    margin-right: var(--margin-right);
   }
 }
