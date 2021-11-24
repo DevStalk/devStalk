@@ -22,7 +22,7 @@ export function FirstSection(props: FirstSectionProps) {
           <h3>
             Create your developer identity, signup now and get early access.
           </h3>
-          <CtaButton isMobile={true} />
+          <CtaButton />
           <div className={styles.firstSection__socials}>
             <div className="social">
               <div className="social-shadow"></div>

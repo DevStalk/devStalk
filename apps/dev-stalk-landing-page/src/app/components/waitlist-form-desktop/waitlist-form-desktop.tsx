@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+
 import { EmailFormFields } from 'react-mailchimp-subscribe';
-import styles from './waitlist-form.module.scss';
-import gsap from 'gsap';
-import { useMediaQuery } from 'react-responsive';
+import styles from './waitlist-form-desktop.module.scss';
 
 /* eslint-disable-next-line */
-export interface WaitlistFormProps {
+export interface WaitlistFormDesktopProps {
   status: 'error' | 'success' | 'sending' | null;
   message: string | Error | null;
   onValidated: (data: EmailFormFields) => void;
 }
 
-export function WaitlistForm(props: WaitlistFormProps) {
+export function WaitlistFormDesktop(props: WaitlistFormDesktopProps) {
   const [email, setEmail] = useState('');
 
   const wrapper = useRef() as React.RefObject<HTMLDivElement>;
@@ -26,13 +25,6 @@ export function WaitlistForm(props: WaitlistFormProps) {
     e.preventDefault();
     email && email.indexOf('@') > -1 && props.onValidated({ EMAIL: email });
   };
-
-  useEffect(() => {
-    gsap.to('.' + styles.waitlistForm__wrapper, {
-      bottom: 0,
-      ease: 'power3.out',
-    });
-  });
 
   return (
     <div ref={wrapper} className={styles.waitlistForm__wrapper}>
@@ -79,4 +71,4 @@ export function WaitlistForm(props: WaitlistFormProps) {
   );
 }
 
-export default WaitlistForm;
+export default WaitlistFormDesktop;

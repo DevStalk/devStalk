@@ -15,6 +15,13 @@ body,
   box-sizing: border-box;
 }
 
+body {
+  @include respond(phone) {
+    position: fixed;
+    height: 100%;
+  }
+}
+
 html {
   font-size: 62.5%;
 
