@@ -19,13 +19,6 @@
     height: 100%;
   }
   color: #eaeaff;
-  &__heading {
-    &__wrap {
-      & h1 {
-        font-size: min(12vh, 12vw);
-      }
-    }
-  }
 
   &__main {
     --element-base-size: min(7vw, 7vh);
@@ -40,18 +33,22 @@
     }
     &_wrapper {
       position: absolute;
+      @include respond(phone) {
+        position: fixed;
+      }
       &1 {
         bottom: 5vh;
         right: -1vw;
         width: var(--element-base-size);
         height: var(--element-base-size);
-        @include respond(tab-land) {
-        }
-        @include respond(tab-port) {
-        }
         @include respond(phone) {
-        }
-        @include respond(small-phone) {
+          display: none;
+          top: unset;
+          transform: rotate(10deg) rotateY(-40deg) rotateZ(20deg) skew(-0deg);
+          bottom: -3vh;
+          right: 14vw;
+          width: calc(var(--element-base-size) * 4);
+          height: calc(var(--element-base-size) * 4);
         }
       }
       &2 {
@@ -59,13 +56,13 @@
         right: -6vw;
         width: calc(var(--element-base-size) * 2);
         height: calc(var(--element-base-size) * 2);
-        @include respond(tab-land) {
-        }
-        @include respond(tab-port) {
-        }
         @include respond(phone) {
-        }
-        @include respond(small-phone) {
+          top: unset;
+          transform: rotate(120deg) rotateZ(20deg) skew(-10deg);
+          bottom: -3vh;
+          left: -4vw;
+          width: calc(var(--element-base-size) * 5);
+          height: calc(var(--element-base-size) * 5);
         }
       }
       &3 {
@@ -74,13 +71,8 @@
         left: -5vw;
         width: calc(var(--element-base-size) + 1rem);
         height: calc(var(--element-base-size) + 1rem);
-        @include respond(tab-land) {
-        }
-        @include respond(tab-port) {
-        }
-        @include respond(small-phone) {
-        }
         @include respond(phone) {
+          display: none;
         }
       }
       &4 {
@@ -88,11 +80,15 @@
         left: -1vw;
         width: calc(var(--element-base-size) + 2rem);
         height: calc(var(--element-base-size) + 2rem);
-        @include respond(tab-land) {
-        }
-        @include respond(tab-port) {
-        }
         @include respond(phone) {
+          transform: rotate(10deg) skew(-10deg);
+          bottom: 25vh;
+          right: -7vw;
+          left: unset;
+          // bottom: 40vh;
+          // left: -3vw;
+          width: calc(var(--element-base-size) * 3);
+          height: calc(var(--element-base-size) * 3);
         }
       }
       &5 {
@@ -100,11 +96,15 @@
         right: 1vw;
         width: calc(var(--element-base-size) + 1rem);
         height: calc(var(--element-base-size) + 1rem);
-        @include respond(tab-land) {
-        }
-        @include respond(tab-port) {
-        }
         @include respond(phone) {
+          transform: rotate(70deg) skew(-0deg);
+          bottom: 40vh;
+          left: -6vw;
+          right: unset;
+          // bottom: 25vh;
+          // right: -7vw;
+          width: calc(var(--element-base-size) * 3);
+          height: calc(var(--element-base-size) * 3);
         }
       }
     }
@@ -116,18 +116,13 @@
     font-size: min(10vh, 10vw);
     max-width: 65vw;
     text-transform: uppercase;
-    @include respond(tab-land) {
-      max-width: 80vw;
-    }
-    @include respond(tab-port) {
-      max-width: 80vw;
-    }
-
-    @include respond(phone) {
-      max-width: 95vw;
-    }
-    @include respond(small-phone) {
-      max-width: 95vw;
+    &__wrap {
+      & h1 {
+        font-size: min(12vh, 12vw);
+        @include respond(phone) {
+          font-size: min(11vh, 11vw);
+        }
+      }
     }
   }
   &__subHeading {

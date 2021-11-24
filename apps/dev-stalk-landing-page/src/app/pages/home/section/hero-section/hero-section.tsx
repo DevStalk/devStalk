@@ -76,7 +76,6 @@ const HeroMain = () => {
   return (
     <div className={styles.hero}>
       <div className={styles.hero__main}>
-        <HeroMainSVGs />
         <div className={styles.hero__heading}>
           <div
             className={`${styles.hero__heading__wrap} primary-heading__wrap `}
@@ -94,6 +93,7 @@ const HeroMain = () => {
             <h1 className="primary-heading">identity</h1>
           </div>
         </div>
+        <HeroMainSVGs />
       </div>
       <h4 className={styles.hero__subHeading}>
         A new professional community for your independent journey.
