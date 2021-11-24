@@ -16,10 +16,10 @@ body,
 }
 
 body {
-  @include respond(phone) {
-    position: fixed;
-    height: 100%;
-  }
+  // @include respond(phone) {
+  //   position: fixed;
+  //   height: 100%;
+  // }
 }
 
 html {

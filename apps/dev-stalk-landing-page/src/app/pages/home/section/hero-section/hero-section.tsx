@@ -31,19 +31,11 @@ export function HeroSection(props: HeroSectionProps) {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    const pin = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.' + styles.hero,
-        pin: '.' + styles.hero,
-        pinSpacing: true,
-        start: 'bottom bottom',
-        end: 'bottom top',
-        scrub: 1,
-      },
-    });
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: '.' + styles.hero__wrapper,
+        pin: '.' + styles.hero,
+        // pinSpacing: true,
         start: 'top top',
         end: 'bottom top',
         scrub: 1,
