@@ -1,9 +1,10 @@
 import styles from './navigation-bar.module.scss';
 
 import DevStalkLogo from '../../../assets/logo/Icon-White.png';
-import DevStalkLogoBlack from '../../../assets/logo/Icon-Color.png';
+import DevStalkLogoBlack from '../../../assets/logo/Icon-Black.png';
 import DevStalkWordMark from '../../../assets/logo/Wordmark-White.png';
 import DevStalkWordMarkBlack from '../../../assets/logo/Wordmark-Black.png';
+
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -32,12 +33,18 @@ export function NavigationBar(props: NavigationBarProps) {
       setVisible(prev > currentScrollPos);
       setPrevScrollPos(window.pageYOffset);
 
-      if (currentScrollPos >= window.innerHeight / 2) setOnTop(false);
+      if (currentScrollPos >= window.innerHeight / 2.5) setOnTop(false);
       else setOnTop(true);
     };
+
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 3000);
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
     };
   }, [prevScrollPos]);
 
