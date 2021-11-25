@@ -32,6 +32,7 @@ export function CtaButton(props: CtaButtonProps) {
       <PortalModal open={formOpen} onClose={formHandler}>
         <MailchimpFormContainer
           type={isTabletOrMobile ? 'Mobile' : 'Desktop'}
+          onClose={formHandler}
         />
       </PortalModal>
     </div>

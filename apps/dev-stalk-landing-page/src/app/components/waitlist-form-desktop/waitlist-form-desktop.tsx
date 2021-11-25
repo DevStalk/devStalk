@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import gsap from 'gsap';
+
 import { EmailFormFields } from 'react-mailchimp-subscribe';
 import styles from './waitlist-form-desktop.module.scss';
+import Scissors from '../../../assets/components/scissors.png';
+import Art from '../../../assets/logo/Icon-Embossed.png';
 
 /* eslint-disable-next-line */
 export interface WaitlistFormDesktopProps {
+  onClose: () => void;
   status: 'error' | 'success' | 'sending' | null;
   message: string | Error | null;
   onValidated: (data: EmailFormFields) => void;
@@ -26,8 +31,22 @@ export function WaitlistFormDesktop(props: WaitlistFormDesktopProps) {
     email && email.indexOf('@') > -1 && props.onValidated({ EMAIL: email });
   };
 
+  useEffect(() => {
+    gsap.to('.' + styles.waitlistForm__wrapper, { top: '50%' });
+  });
   return (
     <div ref={wrapper} className={styles.waitlistForm__wrapper}>
+      <div
+        className={styles.waitlistForm__close__wrapper}
+        onClick={props.onClose}
+      >
+        <div className={styles.waitlistForm__close}></div>
+        <img
+          src={Scissors}
+          alt="scissors"
+          className={styles.waitlistForm__close__scissors}
+        ></img>
+      </div>
       {props.status !== 'success' ? (
         <form
           className={styles.waitlistForm__form}
@@ -36,7 +55,7 @@ export function WaitlistFormDesktop(props: WaitlistFormDesktopProps) {
           <div style={{ textAlign: 'center' }}>
             <h2 className={styles.waitlistForm__title}>Join our waitlist </h2>
             <h4 className={styles.waitlistForm__description}>
-              Experience the best & Find the unknown
+              experience the best and find the unknown
             </h4>
             {props.status === 'error' && (
               <div className="mc__alert mc__alert--error">{props.message}</div>
@@ -61,10 +80,21 @@ export function WaitlistFormDesktop(props: WaitlistFormDesktopProps) {
         </form>
       ) : (
         <div className={styles.waitlistForm__success}>
-          <h2 className={styles.waitlistForm__success__title}>
-            Welcome to our family,
-            <br /> We will update you regularly
-          </h2>
+          <img src={Art} alt="devStalk Logo"></img>
+          <h1 className={styles.waitlistForm__success__greeting}>
+            Hey devStalker,
+          </h1>
+
+          <p className={styles.waitlistForm__success__description}>
+            We are excited that you've joined our community &#127881;
+            <br />
+            <br />
+            DevStalk is your place to find opportunities, share knowledge and
+            build relationships to achieve your goals.
+            <br />
+            <br />
+            We promise that we won't spam you &#129310;
+          </p>
         </div>
       )}
     </div>

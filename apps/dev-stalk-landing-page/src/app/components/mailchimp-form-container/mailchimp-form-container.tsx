@@ -5,6 +5,7 @@ import WaitlistFormDesktop from '../waitlist-form-desktop/waitlist-form-desktop'
 
 /* eslint-disable-next-line */
 export interface MailchimpFormContainerProps {
+  onClose: () => void;
   type: string;
 }
 
@@ -28,6 +29,7 @@ export function MailchimpFormContainer(props: MailchimpFormContainerProps) {
               status={status}
               message={message}
               onValidated={(formData: EmailFormFields) => subscribe(formData)}
+              onClose={props.onClose}
             />
           )
         }
